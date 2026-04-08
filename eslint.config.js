@@ -1,15 +1,13 @@
-/* eslint-env node */
-const { defineConfig } = require('eslint/config');
+const { defineConfig, globalIgnores } = require('eslint/config');
 const expoConfig = require('eslint-config-expo/flat');
 
 module.exports = defineConfig([
-  expoConfig,
-  {
-    ignores: ['dist/*'],
-  },
-  {
-    rules: {
-      'react/display-name': 'off',
+    globalIgnores(['dist/*']),
+    expoConfig,
+    {
+        files: ['babel.config.js'],
+        languageOptions: {
+            globals: globals.node,
+        },
     },
-  },
 ]);

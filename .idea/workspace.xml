@@ -4,49 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7853ce67-12e6-490c-9e0f-57088dcca937" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(auth)/_layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(auth)/sign-in.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(auth)/sign-up.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(auth)/test.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/home.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/messages.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/profile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/search.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(welcome)/AboutLinque.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(welcome)/Browse.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(welcome)/_layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(welcome)/rawr.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/+not-found.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/authentication/AuthContext.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/authentication/use-auth-context.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/utils/apiFetch.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/utils/sessions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/utils/supabase.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Images/Onboarding/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Onboarding/OnboardingAnimated.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Onboarding/OnboardingPage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Signin/SignInCheck.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Signin/SignInTextField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Tabs/TabPage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/WrappedButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/controllers/ProfileController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/services/SignUpService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/utils/supabase.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/EditScreenInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/EditScreenInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/eslint.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="7853ce67-12e6-490c-9e0f-57088dcca937" name="Changes" comment="never installing babel again" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,31 +37,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "master",
-    "js.linters.configure.manually.selectedeslint": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "D:/webProjects/diploma/app/(welcome)",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "D:\\webProjects\\diploma\\my-expo-app\\node_modules\\eslint",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "bun",
-    "prettierjs.PrettierConfiguration.Package": "D:\\webProjects\\diploma\\my-expo-app\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "discord-application",
-    "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "E:\\JetBrains\\WebStorm 2025.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/webProjects/diploma/app/(welcome)&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;D:\\webProjects\\diploma\\my-expo-app\\node_modules\\eslint&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;bun&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\webProjects\\diploma\\my-expo-app\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;discord-application&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\JetBrains\\WebStorm 2025.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\webProjects\diploma\app\(welcome)" />
@@ -148,10 +106,32 @@
       <workItem from="1775554585927" duration="27594000" />
       <workItem from="1775635151210" duration="19771000" />
       <workItem from="1775666542811" duration="608000" />
+      <workItem from="1775669397600" duration="301000" />
     </task>
+    <task id="LOCAL-00001" summary="never installing babel again">
+      <option name="closed" value="true" />
+      <created>1775669601317</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1775669601317</updated>
+    </task>
+    <task id="LOCAL-00002" summary="never installing babel again">
+      <option name="closed" value="true" />
+      <created>1775669670266</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1775669670266</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="never installing babel again" />
+    <option name="LAST_COMMIT_MESSAGE" value="never installing babel again" />
   </component>
 </project>

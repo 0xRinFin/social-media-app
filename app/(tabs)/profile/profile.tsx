@@ -1,8 +1,8 @@
 import {Image} from "expo-image";
-import {Text, View} from 'react-native';
-import TabPage from "../../components/Tabs/TabPage";
+import {StyleSheet, Text, View} from 'react-native';
+import TabPage from "../../../components/Tabs/TabPage";
 import {useContext, useEffect, useState} from "react";
-import {AuthContext} from "../authentication/use-auth-context";
+import {AuthContext} from "../../authentication/use-auth-context";
 import {supabase, supabase as supabaseClient} from "@/app/utils/supabase";
 import {WrappedButton} from "@/components/WrappedButton";
 import * as ImagePicker from 'expo-image-picker';
@@ -10,7 +10,20 @@ import { toByteArray } from 'base64-js';
 import {router, useLocalSearchParams, useRouter} from "expo-router";
 import {ProfileImage} from "@/components/Tabs/Profile/ProfileImage"
 
-const defaultIcon = require("../../assets/Images/default_avatar.jpg");
+export const defaultIcon = require("../../../assets/Images/default_avatar.jpg");
+export const fetchProfileImage =  async (id?: string) => {
+    if (id == undefined) return defaultIcon;
+
+    const userAvatarPath =`/${id}/avatar.jpg`
+    const doesExist = await supabaseClient.storage
+        .from('avatars')
+        .exists(userAvatarPath)
+
+    if (doesExist.error || !doesExist.data) return defaultIcon;
+
+    const url = supabaseClient.storage.from('avatars').getPublicUrl(userAvatarPath);
+    return url.data.publicUrl;
+}
 
 const Profile = () => {
     const router = useRouter();
@@ -42,22 +55,10 @@ const Profile = () => {
         console.log(data)
     }
 
-    const fetchProfileImage =  async () => {
-        if (targetProfile == undefined) return defaultIcon;
-
-        const userAvatarPath =`/${targetProfile.id}/avatar.jpg`
-        const doesExist = await supabaseClient.storage
-            .from('avatars')
-            .exists(userAvatarPath)
-
-        if (doesExist.error || !doesExist.data) return defaultIcon;
-
-        const url = supabaseClient.storage.from('avatars').getPublicUrl(userAvatarPath);
-        return url.data.publicUrl;
-    }
-
     const renderProfileImage = async () => {
-        const uri = await fetchProfileImage()
+        // if (targetProfile == undefined) return defaultIcon;
+
+        const uri = await fetchProfileImage(targetProfile?.id)
         setProfileImageUri(uri)
     }
 
@@ -98,7 +99,7 @@ const Profile = () => {
               </View>
 
               {(description != null) && (<Text className={"color-white mb-6"}>rawr{description}</Text>)}
-              <WrappedButton isActive={true} title={isSelf ? "Edit Profile" : "Follow"} onClick={() => router.push("/EditProfile/")} isAnimated={true} extraClassName={"w-[90vw] text-md rounded-xl p-[10px]"}></WrappedButton>
+              <WrappedButton isActive={true} title={isSelf ? "Edit Profile" : "Follow"} onClick={() => router.push("profile/editprofile")} isAnimated={true} extraClassName={"w-[90vw] text-md rounded-xl p-[10px]"}></WrappedButton>
           </View>
 
 

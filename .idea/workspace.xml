@@ -4,27 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7853ce67-12e6-490c-9e0f-57088dcca937" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/EditProfile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/profile/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Tabs/Profile/ProfileImage.tsx" afterDir="false" />
+    <list default="true" id="7853ce67-12e6-490c-9e0f-57088dcca937" name="Changes" comment="Profile AAALMOST done">
+      <change afterPath="$PROJECT_DIR$/app/(tabs)/profile/_layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/sign-up.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/sign-up.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/EditProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/profile/editprofile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(tabs)/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/profile.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(welcome)/AboutLinque.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(welcome)/AboutLinque.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/authentication/AuthContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/authentication/AuthContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Images/default_avatar.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Images/default_avatar.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/profile/profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Signin/SignInTextField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Signin/SignInTextField.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Tabs/TabPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Tabs/TabPage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/WrappedButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/WrappedButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/services/SignUpService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/services/SignUpService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +140,7 @@
       <workItem from="1775666542811" duration="608000" />
       <workItem from="1775669397600" duration="3767000" />
       <workItem from="1775675825705" duration="423000" />
-      <workItem from="1775676272406" duration="18917000" />
+      <workItem from="1775676272406" duration="22974000" />
     </task>
     <task id="LOCAL-00001" summary="never installing babel again">
       <option name="closed" value="true" />
@@ -178,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775669780619</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Profile AAALMOST done">
+      <option name="closed" value="true" />
+      <created>1775696094665</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1775696094665</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +183,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="never installing babel again" />
     <MESSAGE value="updated gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated gitignore" />
+    <MESSAGE value="Profile AAALMOST done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Profile AAALMOST done" />
   </component>
 </project>

@@ -16,6 +16,8 @@ export type SignInTextfieldProps = {
     canReset?: boolean,
     onChangeText?: (text: string) => void,
     onSubmitEditing?: () => void,
+    value?: string,
+    disabled?: boolean,
     iconName?: FontAwesome6SolidIconName,
 }
 
@@ -62,8 +64,10 @@ const SigninTextField = forwardRef<SigninTextFieldRef, SignInTextfieldProps>((pr
                         returnKeyType={props.onSubmitEditing ? "next" : "done"}
                         onSubmitEditing={props.onSubmitEditing}
                         onChangeText={props.onChangeText ?? (() => {})}
-                        className={"text-neutral-400 h-14 bg-black border-[1px] p-4 w-full rounded-xl border-[#202020] " + padding}
+                        className={`text-neutral-400 h-14 bg-black border-[1px] p-4 w-full rounded-xl border-[#202020] ${props.disabled && "bg-neutral-900"}` + padding}
                         secureTextEntry={secure}
+                        editable={!props.disabled}
+                        value={props.value}
                     />
                 </View>
             </View>

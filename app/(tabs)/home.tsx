@@ -7,11 +7,7 @@ import {useRouter} from "expo-router";
 const Home = () => {
     const router = useRouter();
     const logout = async () => {
-        const { data } = await supabase.auth.getSession()
-        console.log(data.session)
         const {error} = await supabase.auth.signOut();
-        console.log(error);
-        console.log("hai")
     }
   return (
       <TabPage title={"Home"} className={"items-center justify-center flex gap-3 h-full "}>

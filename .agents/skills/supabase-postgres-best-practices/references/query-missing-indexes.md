@@ -26,13 +26,13 @@ create index orders_customer_id_idx on orders (customer_id);
 
 select * from orders where customer_id = 123;
 
--- EXPLAIN shows: Profile Scan using orders_customer_id_idx (cost=0.42..8.44 rows=100 width=85)
+-- EXPLAIN shows: Index Scan using orders_customer_id_idx (cost=0.42..8.44 rows=100 width=85)
 ```
 
 For JOIN columns, always index the foreign key side:
 
 ```sql
--- Profile the referencing column
+-- Index the referencing column
 create index orders_customer_id_idx on orders (customer_id);
 
 select c.name, o.total

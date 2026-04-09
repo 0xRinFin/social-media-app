@@ -25,7 +25,7 @@ const TabsLayout: React.FC = () => {
               <Badge>99</Badge>
           </NativeTabs.Trigger>
 
-          <NativeTabs.Trigger name={"profile"}>
+          <NativeTabs.Trigger name={"profile"} >
               <Label>Profile</Label>
               <Icon sf={{ default: 'person', selected: 'person.fill' }} drawable="custom_profile_drawable" />
           </NativeTabs.Trigger>

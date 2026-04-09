@@ -1,11 +1,11 @@
 ---
-title: Profile Foreign Key Columns
+title: Index Foreign Key Columns
 impact: HIGH
 impactDescription: 10-100x faster JOINs and CASCADE operations
 tags: foreign-key, indexes, joins, schema
 ---
 
-## Profile Foreign Key Columns
+## Index Foreign Key Columns
 
 Postgres does not automatically index foreign key columns. Missing indexes cause slow JOINs and CASCADE operations.
 
@@ -37,7 +37,7 @@ create table orders (
 create index orders_customer_id_idx on orders (customer_id);
 
 -- Now JOINs and cascades are fast
-select * from orders where customer_id = 123;  -- Profile Scan
+select * from orders where customer_id = 123;  -- Index Scan
 delete from customers where id = 123;          -- Uses index, fast cascade
 ```
 

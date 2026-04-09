@@ -1,11 +1,11 @@
 ---
-title: Choose the Right Profile Type for Your Data
+title: Choose the Right Index Type for Your Data
 impact: HIGH
 impactDescription: 10-100x improvement with correct index type
 tags: indexes, btree, gin, gist, brin, hash, index-types
 ---
 
-## Choose the Right Profile Type for Your Data
+## Choose the Right Index Type for Your Data
 
 Different index types excel at different query patterns. The default B-tree isn't always optimal.
 
@@ -26,7 +26,7 @@ create index products_attrs_idx on products using gin (attributes);
 select * from products where attributes @> '{"color": "red"}';
 ```
 
-Profile type guide:
+Index type guide:
 
 ```sql
 -- B-tree (default): =, <, >, BETWEEN, IN, IS NULL
@@ -45,4 +45,4 @@ create index events_time_idx on events using brin (created_at);
 create index sessions_token_idx on sessions using hash (token);
 ```
 
-Reference: [Profile Types](https://www.postgresql.org/docs/current/indexes-types.html)
+Reference: [Index Types](https://www.postgresql.org/docs/current/indexes-types.html)

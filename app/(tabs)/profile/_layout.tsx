@@ -1,13 +1,14 @@
 // app/(tabs)/profile/_layout.tsx
 
 import { Stack } from 'expo-router';
-import Profile from "@/app/(tabs)/profile/profile";
 
 export default function ProfileLayout() {
     return (
         <Stack screenOptions={{ headerShown: false, gestureEnabled: true }}>
-            <Stack.Screen name="profile" />
-            <Stack.Screen name="editprofile" />
+            <Stack.Screen name="viewprofile"  />
+            <Stack.Screen name="[handle]" />
+            <Stack.Screen name="editprofile"  />
+            <Stack.Screen name="updatedetail" />
 
         </Stack>
     )

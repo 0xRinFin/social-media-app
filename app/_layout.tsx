@@ -13,10 +13,12 @@ const RootNavigator = () => {
 
     const loggedOutHandler = () => {
         if (isLoading) return;
-        if (!isLoggedIn) return router.replace('(welcome)/AboutLinque');
+        if (!isLoggedIn) return router.replace('/(welcome)/AboutLinque');
+
+
     }
     const checkLogged = () => {
-        if (isLoggedIn) return router.replace("(tabs)/home")
+        if (isLoggedIn) return router.replace("/home")
         loggedOutHandler();
     }
 
@@ -45,7 +47,7 @@ const RootLayout = () => {
             <AuthProvider>
                 <RootNavigator/>
             </AuthProvider>
-            <StatusBar style="inverted" />
+            <StatusBar style="light" />
         </SafeAreaProvider>
     );
 };

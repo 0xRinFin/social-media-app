@@ -7,7 +7,7 @@ export const WrappedButton = (props: { isActive: boolean, title: string, onClick
     return (
         <OnboardingAnimated duration={props.isAnimated ? 100 : -100}>
             <Pressable onPress={ props.onClick } className={""}>
-                <Text className={`text-2xl text-black font-medium transition-all duration-700 ${props.isActive ? "bg-amber-300" : "bg-[#1F1F1F]" } w-100 text-center p-4 font-sans ${props.extraClassName} rounded-full` }>{props.title}</Text>
+                <Text className={`text-2xl text-black font-medium transition-all duration-700 ${props.isActive ? "bg-amber-300" : "bg-[#1F1F1F]" } w-100 text-center p-4 font-sans rounded-full ${props.extraClassName}` }>{props.title}</Text>
             </Pressable>
         </OnboardingAnimated>
     );

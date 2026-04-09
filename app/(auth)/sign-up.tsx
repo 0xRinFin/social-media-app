@@ -11,7 +11,8 @@ import {apiFetch} from "../utils/apiFetch";
 
 const errorCodes = {
     email_exists: "Email already exists.",
-    validation_failed: "Invalid email address format."
+    validation_failed: "Invalid email address format.",
+    handle_taken: "Username already taken.",
 }
 
 const RequestSignUp = async (

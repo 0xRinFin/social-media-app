@@ -8,7 +8,7 @@ const TabsLayout: React.FC = () => {
     const router = useRouter();
 
     return (
-      <NativeTabs>
+      <NativeTabs tintColor={"#ffb900"}>
           <NativeTabs.Trigger name={"home"}>
               <Label>Home</Label>
               <Icon sf={{ default: 'house', selected: 'house.fill' }} drawable="custom_home_drawable" />

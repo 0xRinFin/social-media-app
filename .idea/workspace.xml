@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7853ce67-12e6-490c-9e0f-57088dcca937" name="Changes" comment="never installing babel again" />
+    <list default="true" id="7853ce67-12e6-490c-9e0f-57088dcca937" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/(tabs)/EditProfile.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(tabs)/profile/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/Tabs/Profile/ProfileImage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/sign-up.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/sign-up.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/profile.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(welcome)/AboutLinque.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(welcome)/AboutLinque.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/_layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/authentication/AuthContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/authentication/AuthContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Images/default_avatar.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Images/default_avatar.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lock" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Tabs/TabPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Tabs/TabPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/WrappedButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/WrappedButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/services/SignUpService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/services/SignUpService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +43,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;0xRinFin&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/0xRinFin/DiplomaProject.git&quot;,
+    &quot;accountId&quot;: &quot;4c4bf274-c365-42e9-8d7b-ee4dde35c0d5&quot;
+  }
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -37,31 +70,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/webProjects/diploma/app/(welcome)&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;D:\\webProjects\\diploma\\my-expo-app\\node_modules\\eslint&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;bun&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\webProjects\\diploma\\my-expo-app\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;discord-application&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\JetBrains\\WebStorm 2025.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.localhost:3111.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "master",
+    "js.linters.configure.manually.selectedeslint": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "D:/webProjects/diploma/app/(welcome)",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "D:\\webProjects\\diploma\\my-expo-app\\node_modules\\eslint",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "bun",
+    "prettierjs.PrettierConfiguration.Package": "D:\\webProjects\\diploma\\my-expo-app\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "Errors",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "D:\\webProjects\\diploma\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\webProjects\diploma\app\(welcome)" />
@@ -70,12 +104,22 @@
       <recent name="D:\webProjects\diploma\my-expo-app\app\(root)\(tabs)" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\webProjects\diploma\app\(tabs)\profile" />
+      <recent name="D:\webProjects\diploma\app\(tabs)" />
       <recent name="D:\webProjects\diploma\app" />
       <recent name="D:\webProjects\diploma\app\utils" />
       <recent name="D:\webProjects\diploma\app\authentication" />
-      <recent name="D:\webProjects\diploma\app\routes" />
-      <recent name="D:\webProjects\diploma\server\utils" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="localhost:3111" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:3111">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.localhost:3111" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -106,7 +150,9 @@
       <workItem from="1775554585927" duration="27594000" />
       <workItem from="1775635151210" duration="19771000" />
       <workItem from="1775666542811" duration="608000" />
-      <workItem from="1775669397600" duration="301000" />
+      <workItem from="1775669397600" duration="3767000" />
+      <workItem from="1775675825705" duration="423000" />
+      <workItem from="1775676272406" duration="18917000" />
     </task>
     <task id="LOCAL-00001" summary="never installing babel again">
       <option name="closed" value="true" />
@@ -124,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775669670266</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="updated gitignore">
+      <option name="closed" value="true" />
+      <created>1775669780619</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1775669780619</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +186,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="never installing babel again" />
-    <option name="LAST_COMMIT_MESSAGE" value="never installing babel again" />
+    <MESSAGE value="updated gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated gitignore" />
   </component>
 </project>

@@ -34,7 +34,7 @@ export default function AuthProvider({ children }: PropsWithChildren) {
             }
 
             // const { data } = await supabase.auth.getClaims()
-            setClaims(_session.user)
+            fetchClaims()
         })
 
         return () => {
@@ -43,21 +43,26 @@ export default function AuthProvider({ children }: PropsWithChildren) {
     }, [])
 
     useEffect(() => {
-        const fetchProfile = async () => {
-            setIsLoading(true)
+        setIsLoading(true)
 
+        const fetchProfile = async () => {
+            let rawr = {};
             if (claims) {
-                const { data } = await supabase.from('profiles').select('*').eq('id', claims.id).single()
+                const { data } = await supabase.from('profiles').select('*').eq('id', claims.sub).single()
+                console.log("NEW DATA", data)
+                rawr = data
 
                 setProfile(data)
             } else {
                 setProfile(null)
             }
 
-            setIsLoading(false)
+            console.log("NEW PROFILE", profile, rawr)
         }
 
         fetchProfile()
+
+        setIsLoading(false)
     }, [claims])
 
     return (

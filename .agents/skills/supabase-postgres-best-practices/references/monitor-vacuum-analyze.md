@@ -16,7 +16,7 @@ Outdated statistics cause the query planner to make poor decisions. VACUUM recla
 -- Query planner chooses wrong strategy
 explain select * from orders where status = 'pending';
 -- Shows: Seq Scan (because stats show small table)
--- Actually: Index Scan would be much faster
+-- Actually: Profile Scan would be much faster
 ```
 
 **Correct (maintain fresh statistics):**

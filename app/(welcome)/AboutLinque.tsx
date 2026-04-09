@@ -6,17 +6,17 @@ const slides: Slide[] = [
     {
         Title: "What is Linque?",
         Description: "Linque lets you post, explore, and connect with the world around you.",
-        image: require("../../assets/Images/Onboarding/1.png"),
+        image: require("assets/Images/Onboarding/1.png"),
     },
     {
         Title: "Share!",
         Description: "Linque lets you share your personal experiences with others!",
-        image: require("../../assets/Images/Onboarding/3.png"),
+        image: require("assets/Images/Onboarding/3.png"),
     },
     {
         Title: "Browse posts",
         Description: "Linque links you and your friends by sharing posts!",
-        image: require("../../assets/Images/Onboarding/2.png"),
+        image: require("assets/Images/Onboarding/2.png"),
     },
 ]
 

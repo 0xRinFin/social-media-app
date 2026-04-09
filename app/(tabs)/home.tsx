@@ -2,9 +2,10 @@ import {View} from 'react-native';
 import {WrappedButton} from "../../components/WrappedButton";
 import {supabase} from "../utils/supabase"
 import TabPage from "../../components/Tabs/TabPage";
+import {useRouter} from "expo-router";
 
 const Home = () => {
-
+    const router = useRouter();
     const logout = async () => {
         const { data } = await supabase.auth.getSession()
         console.log(data.session)

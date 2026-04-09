@@ -12,7 +12,7 @@ Partial indexes only include rows matching a WHERE condition, making them smalle
 **Incorrect (full index includes irrelevant rows):**
 
 ```sql
--- Index includes all rows, even soft-deleted ones
+-- Profile includes all rows, even soft-deleted ones
 create index users_email_idx on users (email);
 
 -- Query always filters active users
@@ -22,7 +22,7 @@ select * from users where email = 'user@example.com' and deleted_at is null;
 **Correct (partial index matches query filter):**
 
 ```sql
--- Index only includes active users
+-- Profile only includes active users
 create index users_active_email_idx on users (email)
 where deleted_at is null;
 

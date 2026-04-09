@@ -3,9 +3,14 @@ import {supabase} from "../utils/supabase";
 
 const signupPOST = async (req: Request, res: Response) => {
     const { email, password, handle, display_name } = req.body;
-    const { data: userData, error: signUpError } = await supabase.auth.admin.createUser({ email, password, email_confirm: true });
 
+    // check for existing handle \\
+    const data = await supabase.from("profiles").select("*").eq("handle", handle).single();
+    if (data != undefined && data.success) return res.status(500).json({__isAuthError: true, code: "handle_taken"});
+
+    const { data: userData, error: signUpError } = await supabase.auth.admin.createUser({ email, password, email_confirm: true });
     console.log(JSON.stringify(signUpError));
+
     if (signUpError !== null) return res.status(500).json(signUpError);
     if (userData === null) return res.status(500).json({});
 

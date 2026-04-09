@@ -37,4 +37,4 @@ create index orders_status_idx on orders (status) include (customer_id, total);
 select status, customer_id, total from orders where status = 'shipped';
 ```
 
-Reference: [Index-Only Scans](https://www.postgresql.org/docs/current/indexes-index-only-scans.html)
+Reference: [Profile-Only Scans](https://www.postgresql.org/docs/current/indexes-index-only-scans.html)

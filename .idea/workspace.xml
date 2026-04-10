@@ -4,31 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7853ce67-12e6-490c-9e0f-57088dcca937" name="Changes" comment="done for today bye">
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/profile/[handle].tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/profile/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(tabs)/profile/updatedetail.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/services/ChangeProfileService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/services/FollowProfileService.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/advanced-jsonb-indexing.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/advanced-jsonb-indexing.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/monitor-vacuum-analyze.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/monitor-vacuum-analyze.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-covering-indexes.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-covering-indexes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-index-types.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-index-types.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-missing-indexes.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-missing-indexes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-partial-indexes.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/query-partial-indexes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-foreign-key-indexes.md" beforeDir="false" afterPath="$PROJECT_DIR$/.agents/skills/supabase-postgres-best-practices/references/schema-foreign-key-indexes.md" afterDir="false" />
+    <list default="true" id="7853ce67-12e6-490c-9e0f-57088dcca937" name="Changes" comment="AAAAAAAAAAAAAAAA">
+      <change afterPath="$PROJECT_DIR$/app/(tabs)/home/[post].tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(tabs)/home/_layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(tabs)/home/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/services/UploadPostService.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/sign-up.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/sign-up.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/profile/_layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/profile/_layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/profile/editprofile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/profile/editprofile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/profile/profile.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/authentication/AuthContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/authentication/AuthContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/authentication/use-auth-context.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/authentication/use-auth-context.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Tabs/TabPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Tabs/TabPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/WrappedButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/WrappedButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/home.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(tabs)/profile/[handle].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/profile/[handle].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Tabs/Profile/ProfileImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Tabs/Profile/ProfileImage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/controllers/ProfileController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/ProfileController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -108,11 +95,11 @@
       <recent name="D:\webProjects\diploma\my-expo-app\app\(root)\(tabs)" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\webProjects\diploma\app\(tabs)\home" />
+      <recent name="D:\webProjects\diploma\app\(tabs)\post" />
+      <recent name="D:\webProjects\diploma\app\(tabs)\[post].tsx" />
       <recent name="D:\webProjects\diploma\app\(tabs)\profile" />
       <recent name="D:\webProjects\diploma\app\(tabs)" />
-      <recent name="D:\webProjects\diploma\app" />
-      <recent name="D:\webProjects\diploma\app\utils" />
-      <recent name="D:\webProjects\diploma\app\authentication" />
     </key>
   </component>
   <component name="RunManager">
@@ -159,7 +146,8 @@
       <workItem from="1775676272406" duration="23395000" />
       <workItem from="1775736180699" duration="949000" />
       <workItem from="1775738958908" duration="24712000" />
-      <workItem from="1775769729074" duration="4845000" />
+      <workItem from="1775769729074" duration="4869000" />
+      <workItem from="1775808877289" duration="8189000" />
     </task>
     <task id="LOCAL-00001" summary="never installing babel again">
       <option name="closed" value="true" />
@@ -201,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775700265049</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="AAAAAAAAAAAAAAAA">
+      <option name="closed" value="true" />
+      <created>1775774646969</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1775774646969</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +208,7 @@
     <MESSAGE value="updated gitignore" />
     <MESSAGE value="Profile AAALMOST done" />
     <MESSAGE value="done for today bye" />
-    <option name="LAST_COMMIT_MESSAGE" value="done for today bye" />
+    <MESSAGE value="AAAAAAAAAAAAAAAA" />
+    <option name="LAST_COMMIT_MESSAGE" value="AAAAAAAAAAAAAAAA" />
   </component>
 </project>

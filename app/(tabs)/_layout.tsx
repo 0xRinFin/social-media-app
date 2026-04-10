@@ -29,6 +29,9 @@ const TabsLayout: React.FC = () => {
               <Label>Profile</Label>
               <Icon sf={{ default: 'person', selected: 'person.fill' }} drawable="custom_profile_drawable" />
           </NativeTabs.Trigger>
+
+          <NativeTabs.Trigger name={"post"} hidden={true} >
+          </NativeTabs.Trigger>
       </NativeTabs>
     );
 };

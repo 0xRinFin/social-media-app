@@ -1,15 +1,23 @@
 import { Image } from "expo-image";
 import {Alert, ScrollView, StyleSheet, Text, View} from "react-native";
-import TabPage from "../../../components/Tabs/TabPage";
 import { useContext, useEffect, useState, useCallback } from "react";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { AuthContext } from "../../authentication/use-auth-context";
 import { supabase } from "@/app/utils/supabase";
+import TabPage from "@/components/Tabs/TabPage";
 import { WrappedButton } from "@/components/WrappedButton";
-import { useLocalSearchParams, useRouter } from "expo-router";
 import { ProfileImage } from "@/components/Tabs/Profile/ProfileImage";
 import {apiFetch} from "@/app/utils/apiFetch";
 
-export const defaultIcon = require("../../../assets/Images/default_avatar.jpg");
+export const defaultIcon = require("assets/Images/default_avatar.jpg");
+
+type postData = {
+    content: string,
+    created_at: string,
+    id: string,
+    image_url: string
+} 
+
 
 export const fetchProfileImage = async (id?: string) => {
     if (!id) return defaultIcon;
@@ -23,6 +31,7 @@ export const fetchProfileImage = async (id?: string) => {
     return url.data.publicUrl + `?t=${Date.now()}`;
 };
 
+
 const Viewprofile = () => {
     const router = useRouter();
     const { profile, session } = useContext(AuthContext);
@@ -34,6 +43,7 @@ const Viewprofile = () => {
     const [isSelf, setIsSelf] = useState(false);
     const [reloadCounter, setReloadCounter] = useState(0);
     const [isFollowing, setIsFollowing] = useState(false);
+    const [posts, setPosts] = useState<any>([]);
 
     const [name, setName] = useState("Viewprofile");
     const [handle, setHandle] = useState("Viewprofile");
@@ -84,6 +94,13 @@ const Viewprofile = () => {
         setTargetProfile(data);
     }, [params.handle, profile?.handle, profile]);
 
+    const fetchProfilePosts = async () => {
+        if (targetProfile == undefined) return
+
+        const {data} = await supabase.from("posts").select("*").eq("user_id", targetProfile.id);
+        setPosts(data)
+    }
+
     const loadProfileImage = useCallback(async (id?: string) => {
         const uri = await fetchProfileImage(id);
         setProfileImageUri(uri);
@@ -93,6 +110,7 @@ const Viewprofile = () => {
         if (!targetProfile) return;
 
         checkFollowing()
+        fetchProfilePosts()
 
         setName(targetProfile.display_name);
         setHandle(targetProfile.handle);
@@ -113,7 +131,7 @@ const Viewprofile = () => {
     }
 
     return (
-        <TabPage title="Index View" onRefresh={refreshPage}>
+        <TabPage title="Index View" onRefresh={refreshPage} className={""}>
             <ScrollView
                 className="flex-1"
                 contentContainerStyle={{ paddingBottom: 20 }}
@@ -156,9 +174,9 @@ const Viewprofile = () => {
                     />
                 </View>
 
-                <View className="flex flex-row flex-wrap gap-1 mt-1">
-                    {Array.from({ length: 50 }).map((_, i) => (
-                        <ProfileImage key={i} height={100} width={100} />
+                <View className="flex flex-row flex-wrap gap-1 mt-1 w-full items-center">
+                    {posts.map((postData: postData, i: number) => (
+                        <ProfileImage key={i} height={100} width={100} postId={postData.id} imageUrl={postData.image_url}/>
                     ))}
                 </View>
             </ScrollView>

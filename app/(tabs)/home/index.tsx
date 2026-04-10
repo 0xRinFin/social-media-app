@@ -1,7 +1,7 @@
 import {View} from 'react-native';
-import {WrappedButton} from "../../components/WrappedButton";
-import {supabase} from "../utils/supabase"
-import TabPage from "../../components/Tabs/TabPage";
+import {WrappedButton} from "components/WrappedButton";
+import {supabase} from "../../utils/supabase"
+import TabPage from "components/Tabs/TabPage";
 import {useRouter} from "expo-router";
 import {apiFetch} from "@/app/utils/apiFetch";
 import {useContext} from "react";
@@ -43,12 +43,11 @@ const Home = () => {
         })
 
         const rawr = await res.json()
-        console.log(rawr)
-        router.push({pathname:`post/123`})
+        router.push({pathname:`home/post/${rawr.uuid}`})
     };
 
   return (
-      <TabPage title={"Home"} className={"items-center justify-center flex gap-3 h-full "}>
+      <TabPage title={"Index"} className={"items-center justify-center flex gap-3 h-full "}>
           <WrappedButton isActive={true} title={"Log Out"} onClick={logout} isAnimated={true}></WrappedButton>
           <WrappedButton isActive={true} title={"rinney"} onClick={
               () => {
@@ -57,9 +56,7 @@ const Home = () => {
           } isAnimated={true}></WrappedButton>
           <WrappedButton isActive={true} title={"upload post"} onClick={
               () => {
-                  // requestPostUpload()
-                  // router.push({pathname:`post/123`})
-                  router.navigate({ pathname: `/post/123` });
+                  requestPostUpload()
               }
           } isAnimated={true}></WrappedButton>
       </TabPage>

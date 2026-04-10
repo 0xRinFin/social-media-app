@@ -11,7 +11,7 @@ const Index = () => {
     const localProfile = `/profile/${profile.handle}`
 
     useEffect(() => {
-        if (profile?.handle && usePathname !== localProfile) {
+        if (profile?.handle && pathname !== localProfile) {
             router.replace(localProfile);
         }
     }, [profile?.handle]);

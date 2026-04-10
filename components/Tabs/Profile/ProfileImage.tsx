@@ -15,7 +15,13 @@ export const ProfileImage = (props: imageProps) => {
 
     return (
          <View className={" "}>
-             <Pressable onPress={() => router.push({ pathname: `/home/${props.postId}` })}>
+             <Pressable onPress={
+                () => router.push(
+                    { 
+                        pathname: `/profile/post/${props.postId}`,
+                        // re
+                    }
+                )}>
                  <Image source={props.imageUrl} contentFit={"cover"} style={{width:props.width, height:props.height, opacity:0.8}} />
              </Pressable>
          </View>

@@ -8,8 +8,7 @@ import TabPage from "@/components/Tabs/TabPage";
 import { WrappedButton } from "@/components/WrappedButton";
 import { ProfileImage } from "@/components/Tabs/Profile/ProfileImage";
 import {apiFetch} from "@/app/utils/apiFetch";
-
-export const defaultIcon = require("assets/Images/default_avatar.jpg");
+import { defaultIcon, fetchProfileImage } from "@/app/utils/postUtils";
 
 type postData = {
     content: string,
@@ -17,20 +16,6 @@ type postData = {
     id: string,
     image_url: string
 } 
-
-
-export const fetchProfileImage = async (id?: string) => {
-    if (!id) return defaultIcon;
-
-    const userAvatarPath = `/${id}/avatar.jpg`;
-    const doesExist = await supabase.storage.from("avatars").exists(userAvatarPath);
-
-    if (doesExist.error || !doesExist.data) return defaultIcon;
-
-    const url = supabase.storage.from("avatars").getPublicUrl(userAvatarPath);
-    return url.data.publicUrl + `?t=${Date.now()}`;
-};
-
 
 const Viewprofile = () => {
     const router = useRouter();

@@ -1,4 +1,4 @@
-import {KeyboardAvoidingView, Pressable, Text, TextInput, View} from 'react-native';
+import {KeyboardAvoidingView, Pressable, Text, TextInput, View, ViewProps} from 'react-native';
 import { FontAwesome6, FontAwesome6SolidIconName } from '@react-native-vector-icons/fontawesome6';
 import {Link} from "expo-router";
 import {OnboardingAnimated} from "../Onboarding/OnboardingAnimated";
@@ -19,7 +19,9 @@ export type SignInTextfieldProps = {
     value?: string,
     disabled?: boolean,
     iconName?: FontAwesome6SolidIconName,
-}
+
+    className?: ViewProps["className"]
+} 
 
 const SigninTextField = forwardRef<SigninTextFieldRef, SignInTextfieldProps>((props, ref) => {
     const [secure, setSecure] = useState(props.isPassword);
@@ -35,8 +37,10 @@ const SigninTextField = forwardRef<SigninTextFieldRef, SignInTextfieldProps>((pr
     if (props.iconName) padding += " pl-14"
 
     return (
-        <OnboardingAnimated>
-            <View className={"flex gap-3"}>
+        <OnboardingAnimated className={props.className}>
+            <View className={"flex gap-3 w-full"}>
+                {props.title !== "" && 
+                (
                 <View className={"flex flex-row justify-between"}>
                     <Text className={"text-white text-md"}>{props.title}</Text>
                     {(props.isPassword && props.canReset) && (
@@ -45,8 +49,9 @@ const SigninTextField = forwardRef<SigninTextFieldRef, SignInTextfieldProps>((pr
                         </Link>
                     )}
                 </View>
+                )}
 
-                <View>
+                <View className="">
                     {props.isPassword && (
                         <Pressable className={"absolute z-2 justify-center items-center h-full right-2 w-12"} onPress={() => setSecure(!secure)}>
                             <FontAwesome6 name={secure ? "eye" : "eye-slash"} iconStyle={"solid"} color={"#505050"} size={16} />
@@ -64,10 +69,11 @@ const SigninTextField = forwardRef<SigninTextFieldRef, SignInTextfieldProps>((pr
                         returnKeyType={props.onSubmitEditing ? "next" : "done"}
                         onSubmitEditing={props.onSubmitEditing}
                         onChangeText={props.onChangeText ?? (() => {})}
-                        className={`text-neutral-400 h-14 bg-black border-[1px] p-4 w-full rounded-xl border-[#202020] ${props.disabled && "bg-neutral-900"}` + padding}
+                        className={`text-neutral-400 h-14 bg-black border p-4 w-full rounded-xl border-[#202020] ${props.disabled && "bg-neutral-900"}` + padding}
                         secureTextEntry={secure}
                         editable={!props.disabled}
                         value={props.value}
+                        placeholder={props.placeholder}
                     />
                 </View>
             </View>

@@ -10,6 +10,5 @@ const router = Router();
 router.post('/signup', signupPOST);
 router.post('/changeDetail', changeDetailPOST);
 router.post('/follow', followPOST);
-router.post('/uploadPost', uploadpostPOST);
 
 export default router;

@@ -82,7 +82,7 @@ const Viewprofile = () => {
     const fetchProfilePosts = async () => {
         if (targetProfile == undefined) return
 
-        const {data} = await supabase.from("posts").select("*").eq("user_id", targetProfile.id);
+        const {data} = await supabase.from("posts").select("*").eq("user_id", targetProfile.id).order("created_at", {ascending:false});
         setPosts(data)
     }
 

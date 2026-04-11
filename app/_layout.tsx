@@ -6,6 +6,7 @@ import {useContext, useMemo, useEffect, useState} from "react";
 
 import AuthProvider from "./authentication/AuthContext";
 import {useAuthContext} from "./authentication/use-auth-context";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const RootNavigator = () => {
     const router = useRouter();

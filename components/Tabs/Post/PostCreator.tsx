@@ -2,11 +2,11 @@ import { formatDate } from "@/app/utils/postUtils"
 import { Image } from "expo-image"
 import { Text, View } from "react-native"
 
-type creatorProps = {
+export type postProps = {
     imageUrl: string, handle: string, displayName: string, postDate: string
 }
 
-const PostCreator = (props: creatorProps) => {
+const PostCreator = (props: postProps) => {
     return (
         <View className="flex items-start w-full">
             <View className="flex flex-row items-center gap-2">

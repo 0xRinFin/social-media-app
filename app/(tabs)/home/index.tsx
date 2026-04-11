@@ -29,7 +29,7 @@ const Home = () => {
         const chosenImage = result.assets[0];
 
         if (chosenImage.base64 == undefined) return;
-        const res = await apiFetch("/api/ProfileController/uploadPost", {
+        const res = await apiFetch("/api/PostController/uploadPost", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

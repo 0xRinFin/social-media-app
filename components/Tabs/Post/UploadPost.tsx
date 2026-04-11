@@ -29,7 +29,7 @@ const UploadPost = () => {
             mediaTypes: "images",
             quality: 1,
             base64: true,
-            allowsEditing: true
+            // allowsEditing: true
         });
         setisImageLoading(false)
         

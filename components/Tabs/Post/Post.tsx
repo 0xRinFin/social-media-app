@@ -259,10 +259,6 @@ const Viewpost = () => {
                     <PostCreator displayName={profileDisplay} handle={profileHandle} imageUrl={profileImageUri} postDate={postDate}/>
 
                     <Text className="color-white">{postDescription}</Text>
-                    {/* <Pressable onPress={show} className="w-full h-[400px]">
-                        <Image source={postImage} style={{width: "100%", height: "100%", borderRadius:10, borderWidth:2, borderColor:"#2f2f2f"}} contentFit="cover"/>
-                    </Pressable> */}
-
                     <GestureDetector gesture={gesture}>
                         <View className="w-full h-[400px]">
                             <Image
@@ -294,7 +290,7 @@ const Viewpost = () => {
 
                     <View className="flex flex-row w-full p-2 justify-between">
                         <View className="flex flex-row gap-4">
-                            <Pressable>
+                            <Pressable onPress={requestPostLike}>
                                 {
                                     (waitingLike) ? (<ActivityIndicator size="large" color="#ffb900" />) 
                                     : (<FontAwesome6 iconStyle={postIsLiked ? "solid" : "regular"} name={"heart"} size={40} color={"#ffb900"}  />)

@@ -4,6 +4,8 @@ import { Image } from "expo-image"
 import { useEffect, useState } from "react"
 import { Text, View } from "react-native"
 import { formatDistanceToNow } from "date-fns"
+import { Pressable } from "react-native-gesture-handler"
+import { Link } from "expo-router"
 
 export type commentData = {
     id: string,
@@ -53,24 +55,25 @@ const PostComment = (props: commentProps) => {
 
     return (
          <View className="flex gap-4">
-            <View className="flex flex-row gap-2">
-                <Image source={imageUrl}  style={{ width: 50, height: 50, borderRadius: 50, borderWidth: 1, borderColor: "#2f2f2f" }} />
+            <Link href={`profile/${handle}`}>
+                <View className="flex flex-row gap-2">
+                    <Image source={imageUrl}  style={{ width: 50, height: 50, borderRadius: 50, borderWidth: 1, borderColor: "#2f2f2f" }} />
 
-              <View className="w-[85%]">
-                <View className="flex flex-row justify-between items-center grow">
-                    <View className="flex flex-row items-center gap-1">
-                        <Text className="color-white text-md font-bold">{displayName}</Text>
-                        <Text className="color-amber-400 opacity-50 text-sm">@{handle}</Text>
-                    </View>
+                <View className="w-[85%]">
+                        <View className="flex flex-row justify-between items-center grow">
+                            <View className="flex flex-row items-center gap-1">
+                                <Text className="color-white text-md font-bold">{displayName}</Text>
+                                <Text className="color-amber-400 opacity-50 text-sm">@{handle}</Text>
+                            </View>
 
-                    <Text className="color-neutral-400">{formatDistanceToNow(commentData.created_at, { addSuffix: true })}</Text>
+                            <Text className="color-neutral-400">{formatDistanceToNow(commentData.created_at, { addSuffix: true })}</Text>
 
+                        </View>
+
+                    <Text className="text-white font-light text-xl">{commentData.content}</Text>
                 </View>
-
-                <Text className="text-white font-light">{commentData.content}</Text>
-              </View>
-            </View>
-
+                </View>
+            </Link>
         </View>
     )
 }

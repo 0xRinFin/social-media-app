@@ -1,5 +1,5 @@
 import Animated, {FadeInUp} from "react-native-reanimated";
-import {ActivityIndicator, Pressable, Text, View} from "react-native";
+import {ActivityIndicator, Pressable, Text, View, ViewProps} from "react-native";
 import {OnboardingAnimated} from "./Onboarding/OnboardingAnimated"
 
 export const WrappedButton = (props: { isLoading?: boolean, isActive: boolean, title: string, onClick: () => void, isAnimated: boolean, extraClassName?: string}) => {

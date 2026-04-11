@@ -7,14 +7,16 @@ import TabPage from "@/components/Tabs/TabPage";
 import {Alert, Pressable, Text, View, ActivityIndicator} from "react-native";
 import {useLocalSearchParams, useRouter} from "expo-router";
 import SignInTextField from "@/components/Signin/SignInTextField";
-
-import { defaultIcon, fetchProfileImage } from "./[handle]"
+import { defaultIcon, fetchProfileImage } from "@/app/utils/postUtils";
 import {Image} from "expo-image";
 import {WrappedButton} from "@/components/WrappedButton";
 import {FontAwesome6} from "@react-native-vector-icons/fontawesome6";
 
-export const baseEditButtonStyle = " w-[90vw] text-md rounded-xl p-[10px] border-1 border-neutral-700 "
+export const baseButtonStyle = " text-md rounded-xl p-[10px] border-1 border-neutral-700 "
+export const baseEditButtonStyle = " w-[90vw] " + baseButtonStyle
 export const editButtonStyle = baseEditButtonStyle + " bg-neutral-800 text-neutral-300 "
+
+const labelStyle = "text-neutral-500 text-center font-bold text-xl"
 
 const logout = async () => {
     const {error} = await supabaseClient.auth.signOut();
@@ -121,23 +123,22 @@ const Editprofile = () => {
                      </View>
 
                   </View>
-
               </View>
 
               <View className={"flex gap-6"}>
-                  <Text className={"text-neutral-500 text-center font-bold text-xl"}>Info</Text>
+                  <Text className={labelStyle}>Info</Text>
                   <SignInTextField title={"Display Name"} iconName={"lock"} value={name} disabled={true}></SignInTextField>
                   <SignInTextField title={"Handle"} iconName={"lock"} value={handle} disabled={true}></SignInTextField>
               </View>
 
               <View className={"flex gap-6 mb-24"}>
-                  <Text className={"text-neutral-500 text-center font-bold text-xl"}>Update Account</Text>
+                  <Text className={labelStyle}>Update Account</Text>
                   <WrappedButton isActive={true} title={"Change Display Name"} onClick={() => openUpdateDetail("display_name")} isAnimated={true} extraClassName={editButtonStyle}></WrappedButton>
                   <WrappedButton isActive={true} title={"Change Handle"} onClick={() => openUpdateDetail("handle")} isAnimated={true} extraClassName={editButtonStyle}></WrappedButton>
               </View>
 
               <View className={"flex gap-6"}>
-                  <Text className={"text-neutral-500 text-center font-bold text-xl"}>Account</Text>
+                  <Text className={labelStyle}>Account</Text>
                   <WrappedButton isActive={true} title={"Delete Account"} onClick={() => router.push("profile/updatedetail")} isAnimated={true} extraClassName={editButtonStyle + " bg-red-600 text-white"}></WrappedButton>
                   <WrappedButton isActive={true} title={"Sign Out"} onClick={logout} isAnimated={true} extraClassName={editButtonStyle}></WrappedButton>
               </View>

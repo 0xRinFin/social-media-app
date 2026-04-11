@@ -17,12 +17,13 @@ import { ScrollView } from "react-native-reanimated/lib/typescript/Animated";
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
 import { runOnJS } from 'react-native-reanimated';
 import HeartAnimation from "./HeartAnimation";
+import PostImage from "./PostImage";
 
 
 const Viewpost = () => {
     const router = useRouter()
     const {post} = useLocalSearchParams<{ post: string }>();
-    const {session, profile} = useContext(AuthContext)
+    const {session, profile, fetchProfile} = useContext(AuthContext)
 
     const [postData, setPostData] = useState<any>();
 
@@ -93,6 +94,7 @@ const Viewpost = () => {
             return
 
         Alert.alert("Deleted post", "Successfully deleted this post!")
+        fetchProfile()
         router.back()
     }
 
@@ -261,17 +263,7 @@ const Viewpost = () => {
                     <Text className="color-white">{postDescription}</Text>
                     <GestureDetector gesture={gesture}>
                         <View className="w-full h-[400px]">
-                            <Image
-                                source={postImage}
-                                style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    borderRadius: 10,
-                                    borderWidth: 2,
-                                    borderColor: "#2f2f2f",
-                                }}
-                                contentFit="cover"
-                            />
+                            <PostImage source={postImage}/>
 
                             <HeartAnimation visible={heartVisible} onComplete={() => setHeartVisible(false)} />
                         </View>
@@ -286,6 +278,7 @@ const Viewpost = () => {
                         ]}
                         imageIndex={0}
                         onRequestClose={() => setModalVisible(false)}
+                        
                     />
 
                     <View className="flex flex-row w-full p-2 justify-between">

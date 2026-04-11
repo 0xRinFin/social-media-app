@@ -69,11 +69,12 @@ const SigninTextField = forwardRef<SigninTextFieldRef, SignInTextfieldProps>((pr
                         returnKeyType={props.onSubmitEditing ? "next" : "done"}
                         onSubmitEditing={props.onSubmitEditing}
                         onChangeText={props.onChangeText ?? (() => {})}
-                        className={`text-neutral-400 h-14 bg-black border p-4 w-full rounded-xl border-[#202020] ${props.disabled && "bg-neutral-900"}` + padding}
+                        className={`min-h-12 text-neutral-400 h-14 bg-black border p-4 w-full rounded-xl border-[#202020] ${props.disabled && "bg-neutral-900"}` + padding}
                         secureTextEntry={secure}
                         editable={!props.disabled}
                         value={props.value}
                         placeholder={props.placeholder}
+                        // multiline={true}
                     />
                 </View>
             </View>

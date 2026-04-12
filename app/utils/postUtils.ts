@@ -14,6 +14,8 @@ export const fetchProfileImage = async (id?: string) => {
     return url.data.publicUrl + `?t=${Date.now()}`;
 };
 
+
+
 export const formatDate = (created_at: string) => {
   return new Date(created_at).toLocaleDateString('en-GB', {
     day: 'numeric',

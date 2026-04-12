@@ -53,6 +53,7 @@ const Editprofile = () => {
             mediaTypes: "images",
             quality: 1,
             base64: true,
+            allowsEditing:true
         });
 
         if (result.canceled || !result.assets.length) return;

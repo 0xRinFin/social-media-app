@@ -260,7 +260,7 @@ const Viewpost = () => {
                 <View className="items-center p-4  w-full flex gap-4">
                     <PostCreator displayName={profileDisplay} handle={profileHandle} imageUrl={profileImageUri} postDate={postDate}/>
 
-                    <Text className="color-white">{postDescription}</Text>
+                    <Text className="color-white w-full text-left text-2xl">{postDescription}</Text>
                     <GestureDetector gesture={gesture}>
                         <View className="w-full h-[400px]">
                             <PostImage source={postImage}/>
@@ -322,7 +322,7 @@ const Viewpost = () => {
 
                     <View className="w-full border-t border-neutral-600 p-2 pt-4 mb-48 flex gap-4" onLayout={event => setCommentSectionLayout(event.nativeEvent.layout)}>
                         
-                        <Text className="text-white text-2xl ">{postComments.length} Comments</Text>
+                        <Text className="text-white text-2xl">{postComments.length} Comments</Text>
                         <View className="flex flex-row w-full items-center justify-between gap-4">
                             <SigninTextField title="" placeholder="Wrie down a comment?" className="grow" onChangeText={setCommentText} value={commentText}/>
                             <IconButton name="paper-plane" size={30} style={"solid"} onPress={requestSendComment} color={"#ffb900"}/>

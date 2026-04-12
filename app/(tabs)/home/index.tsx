@@ -19,6 +19,12 @@ const Home = () => {
                 //   requestPostUpload()
               }
           } isAnimated={true}/>
+
+        <WrappedButton isActive={true} title={"rinney"} extraClassName={baseEditButtonStyle} onClick={
+              () => {
+                router.push("profile/profile/rinneyboi")
+              }
+          } isAnimated={true}/>
       </TabPage>
   );
 };

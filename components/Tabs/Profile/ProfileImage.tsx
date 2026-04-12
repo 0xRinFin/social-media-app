@@ -1,6 +1,6 @@
 import {Image} from "expo-image";
 import {Pressable, View} from "react-native";
-import {useRouter} from "expo-router";
+import {usePathname, useRouter} from "expo-router";
 
 type imageProps = {
     height: number;
@@ -12,16 +12,12 @@ type imageProps = {
 
 export const ProfileImage = (props: imageProps) => {
     const router = useRouter();
+    const pathName = usePathname()
+    const routeOpened = pathName.split("/")[1]
 
     return (
          <View className={" "}>
-             <Pressable onPress={
-                () => router.push(
-                    { 
-                        pathname: `/profile/post/${props.postId}`,
-                        // re
-                    }
-                )}>
+             <Pressable onPress={() => router.push(`/${routeOpened}/post/${props.postId}`)}>
                  <Image source={props.imageUrl} contentFit={"cover"} style={{width:props.width, height:props.height, opacity:0.8}} />
              </Pressable>
          </View>

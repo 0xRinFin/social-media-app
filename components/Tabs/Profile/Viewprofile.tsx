@@ -1,7 +1,7 @@
 import { Image } from "expo-image";
-import { ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View } from "react-native";
 import { useContext, useEffect, useState, useCallback } from "react";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams, usePathname, useRouter } from "expo-router";
 import { AuthContext } from "@/app/authentication/use-auth-context";
 import { supabase } from "@/app/utils/supabase";
 import TabPage from "@/components/Tabs/TabPage";
@@ -17,6 +17,25 @@ type postData = {
     image_url: string
 } 
 
+export const requestFollow = async (session: {access_token: string}, handle: string, setIsLoading: (state: any) => void, setReloadCounter: (prev: any) => any) => {
+    if (!session) return
+
+    setIsLoading(true);
+    const res = await apiFetch("/api/ProfileController/follow", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': session.access_token
+        },
+
+        body: JSON.stringify({handle})
+    })
+
+    setIsLoading(false);
+    //@ts-ignore
+    setReloadCounter(prev => prev + 1)
+}
+
 const Viewprofile = () => {
     const router = useRouter();
     const { profile, session } = useContext(AuthContext);
@@ -30,28 +49,16 @@ const Viewprofile = () => {
     const [isFollowing, setIsFollowing] = useState(false);
     const [posts, setPosts] = useState<any>([]);
 
+    const [followerCount, setFollowerCount] = useState(0)
+    const [followingCount, setFollowingCount] = useState(0)
+
     const [name, setName] = useState("Viewprofile");
     const [handle, setHandle] = useState("Viewprofile");
     const [description, setDescription] = useState("");
     const [profileImageUri, setProfileImageUri] = useState<string | null>(defaultIcon);
 
-    const requestFollow = async () => {
-        if (!session) return
-
-        setIsLoading(true);
-        const res = await apiFetch("/api/ProfileController/follow", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                'Authorization': session.access_token
-            },
-
-            body: JSON.stringify({handle})
-        })
-
-        setIsLoading(false);
-        setReloadCounter(prev => prev + 1)
-    }
+    const pathName = usePathname()
+    const routeOpened = pathName.split("/")[1]
 
     const checkFollowing = async () => {
         if (isSelf) return
@@ -61,6 +68,18 @@ const Viewprofile = () => {
         const {data} = await supabase.from("follows").select("*").eq("follower_id", profile.id).eq("following_id", targetProfile.id).single();
 
         setIsFollowing(data != null)
+    }
+
+    const fetchFollowerList = async (followType: "following_id" | "follower_id") => {
+        if (targetProfile == undefined) return
+        const {data} = await supabase.from("follows").select("*").eq(followType, targetProfile.id)
+        if (data == undefined)
+            return
+
+        if (followType == "following_id")
+            setFollowerCount(data.length)
+        else
+            setFollowingCount(data.length)
     }
 
     const fetchProfileData = useCallback(async () => {
@@ -96,6 +115,9 @@ const Viewprofile = () => {
 
         checkFollowing()
         fetchProfilePosts()
+
+        fetchFollowerList("follower_id")
+        fetchFollowerList("following_id")
 
         setName(targetProfile.display_name);
         setHandle(targetProfile.handle);
@@ -133,13 +155,19 @@ const Viewprofile = () => {
                                 <Text className="text-4xl color-white font-bold">{name}</Text>
                                 <Text className="text-2xl color-amber-400 opacity-70">@{handle}</Text>
                             </View>
+
                             <View className="flex flex-row gap-4">
-                                <Text className="text-xl color-neutral-400 font-light">
-                                    Followers: <View className="bg-amber-400 rounded-md translate-y-[6px] p-[1px]"><Text className="font-bold">123</Text></View>
-                                </Text>
-                                <Text className="text-xl color-neutral-400 font-light">
-                                    Following: <View className="bg-amber-400 rounded-md translate-y-[6px] p-[1px]"><Text className="font-bold">123</Text></View>
-                                </Text>
+                                <Pressable onPress={() => router.push({pathname:`${routeOpened}/following/${handle}`, params:{type:"followers"}}) }>
+                                    <Text className="text-xl color-neutral-400 font-light">
+                                        Followers: <View className="bg-amber-400 rounded-md translate-y-[6px] p-[1px]"><Text className="font-bold">{followerCount}</Text></View>
+                                    </Text>
+                                </Pressable>
+
+                                <Pressable onPress={() => router.push({pathname:`${routeOpened}/following/${handle}`, params:{type:"followings"}}) }>
+                                    <Text className="text-xl color-neutral-400 font-light">
+                                        Following: <View className="bg-amber-400 rounded-md translate-y-[6px] p-[1px]"><Text className="font-bold">{followingCount}</Text></View>
+                                    </Text>
+                                </Pressable>
                             </View>
                         </View>
                     </View>
@@ -152,7 +180,7 @@ const Viewprofile = () => {
                             if (isSelf)
                                 router.push("profile/editprofile")
                             else // follow
-                                requestFollow()
+                                requestFollow(session, handle, setIsLoading, setReloadCounter)
                         }}
                         isAnimated
                         extraClassName={`w-[90vw] text-md rounded-xl p-[10px] ${ isFollowing && "bg-neutral-600" }`}

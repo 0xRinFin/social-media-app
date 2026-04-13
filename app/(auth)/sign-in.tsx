@@ -1,4 +1,4 @@
-import {Keyboard, Text, TouchableWithoutFeedback, View} from 'react-native';
+import {Alert, Keyboard, Text, TouchableWithoutFeedback, View} from 'react-native';
 import {Link} from "expo-router";
 import {WrappedButton} from "../../components/WrappedButton";
 import Animated, {FadeInUp} from "react-native-reanimated";
@@ -12,13 +12,20 @@ const SignIn = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const emailRef = useRef<SigninTextFieldRef | null>(null);
+    const emailRef = useRef<SigninTextFieldRef>(null);
     const passwordRef = useRef<SigninTextFieldRef>(null);
 
     const isActive = useMemo(() => {
         return email.trim() !== "" && password.trim() !== "";
     }, [email, password])
 
+    const requestSignIn = async () => {
+        const {data, error} = await supabaseClient.auth.signInWithPassword({email, password})
+        if (error)
+            return Alert.alert("Error!", "There was an unexpected error")
+    }
+
+    // const {data, error} = await supabaseClient.auth.signInWithPassword({email: "radan@gmail.com", password: "radana"})
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -35,16 +42,7 @@ const SignIn = () => {
                         <SigninTextField canReset={true} iconName={"key"} title={"Password"} isPassword={true} onChangeText={setPassword} ref={passwordRef}/>
                     </View>
 
-                    <WrappedButton isActive={true} title={"Sign In"} onClick={
-                        async () => {
-                            // if (!isActive) return;
-
-                            const {data, error} = await supabaseClient.auth.signInWithPassword({email: "radan@gmail.com", password: "radana"})
-
-                            console.log(error);
-                            // console.log("HIIIrr " + JSON.stringify(data) );
-                        }
-                    } extraClassName={"rounded-xl"} isAnimated={true}/>
+                    <WrappedButton isActive={isActive} title={"Sign In"} onClick={requestSignIn} extraClassName={"rounded-xl"} isAnimated={true}/>
                 </View>
 
                 <View className={"absolute bottom-10"}>

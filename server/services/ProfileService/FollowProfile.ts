@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import {supabase} from "@server/utils/supabase";
 import {checkAuthorization} from "@server/utils/authorization";
+import { randomUUID } from 'node:crypto';
 
 const followPOST = async (req: Request, res: Response) => {
     console.log("meow")
@@ -32,6 +33,21 @@ const followPOST = async (req: Request, res: Response) => {
     const {data: newFollowing, error: newFollowingError} = await supabase.from("follows").upsert({ follower_id, following_id })
     if (error)
         return res.status(400).json({__isAuthError: false, code: "invalid_request"})
+
+    // check if conversation exists \\
+    const { data: userAConversation } = await supabase.from("conversations").select("*").eq("user_a", follower_id).eq("user_b", following_id)
+    const { data: userBConversation } = await supabase.from("conversations").select("*").eq("user_b", follower_id).eq("user_a", following_id)
+    if (data != null || data != null)
+    {
+        // new conversation \\
+        const convoId = randomUUID()
+        await supabase.from("conversations").upsert({
+            id: convoId,
+            
+            user_a: follower_id,
+            user_b: following_id,
+        })
+    }
 
     return res.status(200).json({__isAuthError: false, code: "success"})
 }

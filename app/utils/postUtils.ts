@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { supabase } from "./supabase";
 
 export const defaultIcon = require("assets/Images/default_avatar.jpg");
@@ -22,4 +23,8 @@ export const formatDate = (created_at: string) => {
     month: 'long',
     year: 'numeric'
   });
+};
+
+export const formatTime = (created_at: string) => {
+  return format(new Date(created_at), 'h:mm a');
 };

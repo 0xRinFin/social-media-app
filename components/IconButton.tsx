@@ -14,7 +14,7 @@ type iconButtonProps = {
 const IconButton = (props: iconButtonProps) => {
     
     if (props.loading)
-        return (<ActivityIndicator size="large" color="#ffb900" />)
+        return (<ActivityIndicator size="small" color="#ffb900" />)
 
     return (
         <Pressable onPress={props.onPress}>

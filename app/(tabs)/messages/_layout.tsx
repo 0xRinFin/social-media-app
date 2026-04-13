@@ -7,7 +7,7 @@ export default function ProfileLayout() {
         <Stack screenOptions={{ headerShown: false, gestureEnabled: true }}>
             <Stack.Screen name="messages/[conversation]" />
             <Stack.Screen name="messages" />
-            <Stack.Screen name="profile/[handle]" />
+            {/* <Stack.Screen name="profile/[handle]" /> */}
         </Stack>
     )
 }

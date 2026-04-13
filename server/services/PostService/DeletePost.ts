@@ -3,7 +3,7 @@ import {supabase} from "../../utils/supabase";
 import {checkAuthorization} from "@server/utils/authorization";
 
 
-const deletepostPOST = async (req: Request, res: Response) => {
+const deletepost = async (req: Request, res: Response) => {
     const { postId } = req.body;
     const { authorization : authorizationToken } = req.headers;
 
@@ -21,4 +21,4 @@ const deletepostPOST = async (req: Request, res: Response) => {
     res.status(200).json({code: "success"})
 }
 
-export default deletepostPOST;
+export default deletepost;

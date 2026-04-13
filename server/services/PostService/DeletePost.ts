@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
-import {supabase} from "../utils/supabase";
-import {checkAuthorization} from "@/server/services/ChangeProfileService";
+import {supabase} from "../../utils/supabase";
+import {checkAuthorization} from "@server/utils/authorization";
+
 
 const deletepostPOST = async (req: Request, res: Response) => {
     const { postId } = req.body;

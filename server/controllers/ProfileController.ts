@@ -1,8 +1,7 @@
 import { Router, Request, Response } from 'express';
-import signupPOST from "../services/SignUpService";
-import changeDetailPOST from "../services/ChangeProfileService";
-import followPOST from "@/server/services/FollowProfileService";
-import uploadpostPOST from "@/server/services/UploadPostService";
+import signupPOST from "../services/ProfileService/SignUp";
+import changeDetailPOST from "../services/ProfileService/ChangeProfile";
+import followPOST from "@/server/services/ProfileService/FollowProfile";
 
 const router = Router();
 

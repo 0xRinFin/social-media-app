@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import {supabase} from "../utils/supabase";
+import {supabase} from "@server/utils/supabase";
 
 const signupPOST = async (req: Request, res: Response) => {
     const { email, password, handle, display_name } = req.body;

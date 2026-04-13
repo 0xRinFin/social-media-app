@@ -1,7 +1,7 @@
 import TabPage from "../TabPage"
 import {WrappedButton} from "components/WrappedButton";
 import {useRouter} from "expo-router";
-import {apiFetch} from "@/app/utils/apiFetch";
+import {apiCall} from "@/app/utils/apiUtils";
 import {useContext, useState} from "react";
 import {AuthContext} from "@/app/authentication/use-auth-context";
 import * as ImagePicker from "expo-image-picker";
@@ -44,22 +44,19 @@ const UploadPost = () => {
         if (selectedImage == null) return
 
         setIsLoading(true)
-        const res = await apiFetch("/api/PostController/uploadPost", {
+        const rawr = await apiCall({
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                'Authorization': session.access_token
-            },
-
-            body: JSON.stringify({
+            controller: "PostController",
+            route: "uploadPost",
+            session: session,
+            body: {
                 description: description,
                 image: selectedImage.base64
-            })
+            }
         })
         
         setIsLoading(false)
 
-        const rawr = await res.json()
         if (rawr && rawr.code == "success")
             router.replace({pathname:`home/post/${rawr.uuid}`})
         else

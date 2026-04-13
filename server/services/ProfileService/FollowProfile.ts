@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
-import {supabase} from "../utils/supabase";
-import {checkAuthorization} from "@/server/services/ChangeProfileService";
+import {supabase} from "@server/utils/supabase";
+import {checkAuthorization} from "@server/utils/authorization";
 
 const followPOST = async (req: Request, res: Response) => {
     console.log("meow")

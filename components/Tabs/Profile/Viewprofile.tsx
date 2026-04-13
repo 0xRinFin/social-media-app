@@ -7,8 +7,9 @@ import { supabase } from "@/app/utils/supabase";
 import TabPage from "@/components/Tabs/TabPage";
 import { WrappedButton } from "@/components/WrappedButton";
 import { ProfileImage } from "@/components/Tabs/Profile/ProfileImage";
-import {apiFetch} from "@/app/utils/apiFetch";
+import {apiCall} from "@/app/utils/apiUtils";
 import { defaultIcon, fetchProfileImage } from "@/app/utils/postUtils";
+import { AuthSession } from "@supabase/supabase-js";
 
 type postData = {
     content: string,
@@ -17,18 +18,18 @@ type postData = {
     image_url: string
 } 
 
-export const requestFollow = async (session: {access_token: string}, handle: string, setIsLoading: (state: any) => void, setReloadCounter: (prev: any) => any) => {
+export const requestFollow = async (session: AuthSession, handle: string, setIsLoading: (state: any) => void, setReloadCounter: (prev: any) => any) => {
     if (!session) return
 
     setIsLoading(true);
-    const res = await apiFetch("/api/ProfileController/follow", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            'Authorization': session.access_token
-        },
 
-        body: JSON.stringify({handle})
+    const res = await apiCall({
+        method: "POST",
+        controller:"ProfileController",
+        route: "follow",
+        session: session,
+
+        body: {handle}
     })
 
     setIsLoading(false);

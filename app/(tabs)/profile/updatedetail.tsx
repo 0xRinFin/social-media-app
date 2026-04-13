@@ -6,7 +6,7 @@ import TabPage from "@/components/Tabs/TabPage";
 import {WrappedButton} from "@/components/WrappedButton";
 import {baseEditButtonStyle, editButtonStyle} from "@/app/(tabs)/profile/editprofile";
 import {useContext, useEffect, useState} from "react";
-import {apiFetch} from "@/app/utils/apiFetch";
+import {apiCall} from "@/app/utils/apiUtils";
 import {AuthContext} from "@/app/authentication/use-auth-context";
 
 const details = {
@@ -38,21 +38,16 @@ const updateDetailPage = () => {
         if (profile == undefined) return; // eror
 
         (async () => {
-            const res = await apiFetch("/api/ProfileController/changeDetail", {
+            const data = await apiCall({
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    'Authorization': session.access_token
-                },
-
-                body: JSON.stringify({
+                controller: "ProfileController",
+                route: "changeDetail",
+                session: session,
+                body: {
                     detail: detail,
                     value: newDetailValue
-                })
-
+                }
             })
-
-            const data = await res.json()
             console.log(data)
             if (data.success) {
                 Alert.alert("Success", `Successfully changed your ${detailName}!`)

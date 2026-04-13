@@ -7,7 +7,7 @@ import {useMemo, useRef, useState} from "react";
 import SignInTextField, {SigninTextFieldRef} from "../../components/Signin/SignInTextField";
 import SignInCheckBox from "../../components/Signin/SignInCheck";
 
-import {apiFetch} from "../utils/apiFetch";
+import {apiCall} from "../utils/apiUtils";
 
 const errorCodes = {
     email_exists: "Email already exists.",
@@ -21,19 +21,17 @@ const RequestSignUp = async (
     email: string,
     password: string
 ) => {
-    return await apiFetch("/api/ProfileController/signup", {
+    return await apiCall({
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
+        controller:"ProfileController",
+        route: "signup",
 
-        body: JSON.stringify({
+        body: {
             handle: handle,
             display_name: display_name,
             email: email,
             password: password,
-        })
-
+        }
     })
 }
 
@@ -60,19 +58,17 @@ const SignUp = () => {
 
     const handleSignUp = async () => {
         const response = await RequestSignUp(username, displayName, email, password);
-        // const response = await RequestSignUp("radan", "radan", "radan@gmail.com", "radana");
+        // const response = await RequestSignUp("radan", "radan", "radana@gmail.com", "radana");
         if (response === undefined) return;
 
-        if (response.status === 201) {
+        if (response.success) {
             Alert.alert("Success!", "Please, sign in");
             router.replace("/(auth)/sign-in");
-
             return;
         }
 
-        const parsedData = await response.json();
-        const { __isAuthError, code } = parsedData;
-        console.log(parsedData)
+        const { code } = response;
+        console.log(response)
         // error handling \\
         if (code === undefined) return;
 

@@ -11,7 +11,7 @@ import PostCreator from "./PostCreator";
 import SigninTextField from "@/components/Signin/SignInTextField";
 import PostComment, { commentData } from "./PostComment";
 import IconButton from "@/components/IconButton";
-import { apiFetch } from "@/app/utils/apiFetch";
+import { apiCall } from "@/app/utils/apiUtils";
 import { AuthContext } from "@/app/authentication/use-auth-context";
 import { ScrollView } from "react-native-reanimated/lib/typescript/Animated";
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -79,17 +79,13 @@ const Viewpost = () => {
     
          if (!confirmed) return
 
-         const res = await apiFetch("/api/PostController/deletePost", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                'Authorization': session.access_token
-            },
-
-            body: JSON.stringify({postId: post})
+         const body = await apiCall({
+            method: "DELETE",
+            controller: "PostController",
+            route: "deletePost",
+            session: session,
+            body: {postId: post}
         })
-
-        const body = await res.json()
         if (body == undefined || body.code != "success")
             return
 
@@ -101,17 +97,13 @@ const Viewpost = () => {
     const requestPostLike = async () => {
         if (post == undefined) return
         
-         const res = await apiFetch("/api/PostController/likePost", {
+         const body = await apiCall({
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                'Authorization': session.access_token
-            },
-
-            body: JSON.stringify({postId: post})
+            controller: "PostController",
+            route: "likePost",
+            session: session,
+            body: {postId: post}
         })
-
-        const body = await res.json()
         if (body != undefined && body.code == "success")
             refresh()
     }
@@ -203,24 +195,19 @@ const Viewpost = () => {
         if (post == undefined) return
         if (session == undefined) return
 
-        const res = await apiFetch("/api/PostController/comment", {
+        const body = await apiCall({
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                'Authorization': session.access_token
-            },
-
-            body: JSON.stringify({
+            controller: "PostController",
+            route: "comment",
+            session: session,
+            body: {
                 content: commentText,
                 postId: post
-            })
+            }
         })
 
         setCommentText("")
         Keyboard.dismiss()
-        
-
-        const body = await res.json();
         if (body.code && body.code == "success")
             refresh()
     }

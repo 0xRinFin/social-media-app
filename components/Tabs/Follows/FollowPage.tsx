@@ -10,7 +10,7 @@ import { baseButtonStyle } from "@/app/(tabs)/profile/editprofile";
 import FollowDisplay from "./FollowDisplay";
 
 type followPageProps = {
-    type: "followers" | "followings"
+    type: "followers" | "followings" | (string | string[])
 }
 
 export type followerInfo = {

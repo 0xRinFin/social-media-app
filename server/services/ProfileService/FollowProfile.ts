@@ -37,7 +37,7 @@ const followPOST = async (req: Request, res: Response) => {
     // check if conversation exists \\
     const { data: userAConversation } = await supabase.from("conversations").select("*").eq("user_a", follower_id).eq("user_b", following_id)
     const { data: userBConversation } = await supabase.from("conversations").select("*").eq("user_b", follower_id).eq("user_a", following_id)
-    if (data != null || data != null)
+    if (userAConversation != null || userBConversation != null)
     {
         // new conversation \\
         const convoId = randomUUID()

@@ -21,6 +21,7 @@ const SignIn = () => {
 
     const requestSignIn = async () => {
         const {data, error} = await supabaseClient.auth.signInWithPassword({email, password})
+        console.log(error)
         if (error)
             return Alert.alert("Error!", "There was an unexpected error")
     }

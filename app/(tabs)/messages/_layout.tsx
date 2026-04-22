@@ -1,8 +1,9 @@
 // app/(tabs)/profile/_layout.tsx
 
 import { Stack } from 'expo-router';
+import { Profiler } from 'react';
 
-export default function ProfileLayout() {
+export default function MessagesLayout() {
     return (
         <Stack screenOptions={{ headerShown: false, gestureEnabled: true }}>
             <Stack.Screen name="messages/[conversation]" />

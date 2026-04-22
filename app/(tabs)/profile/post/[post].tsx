@@ -1,2 +1,2 @@
-import Viewpost from "@/components/Tabs/Post/Post";
+import Viewpost from "@/components/Tabs/Post/ViewPost";
 export default Viewpost;

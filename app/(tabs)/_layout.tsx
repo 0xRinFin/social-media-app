@@ -22,7 +22,7 @@ const TabsLayout: React.FC = () => {
           <NativeTabs.Trigger name={"messages"}>
               <Label>Messages</Label>
               <Icon sf={{ default: 'message', selected: 'message.fill' }} drawable="custom_messages_drawable" />
-              <Badge>99</Badge>
+              <Badge>2</Badge>
           </NativeTabs.Trigger>
 
           <NativeTabs.Trigger name={"profile"} >

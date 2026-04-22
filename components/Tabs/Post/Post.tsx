@@ -1,6 +1,6 @@
 import {Link, useLocalSearchParams, useRouter} from "expo-router";
 import { supabase } from "@/app/utils/supabase";
-import {useContext, useEffect, useRef, useState} from "react";
+import {Ref, useContext, useEffect, useRef, useState} from "react";
 import TabPage, { TabProps } from "@/components/Tabs/TabPage";
 import {ActivityIndicator, Alert, FlatList, Keyboard, LayoutRectangle, Pressable, Text, View} from "react-native";
 import { Image } from "expo-image";
@@ -19,13 +19,23 @@ import { runOnJS } from 'react-native-reanimated';
 import HeartAnimation from "./HeartAnimation";
 import PostImage from "./PostImage";
 
+export type PostInfo = {
+    id: string,
+    user_id: string,
 
-const Viewpost = () => {
+    content: string,
+    image_url: string,
+
+    created_at: string,
+}
+
+
+const Post = (props: {postId: string, showComments: boolean, refresh: () => void, scrollViewRef?: React.RefObject<ScrollView | null>} ) => {
     const router = useRouter()
-    const {post} = useLocalSearchParams<{ post: string }>();
     const {session, profile, fetchProfile} = useContext(AuthContext)
 
     const [postData, setPostData] = useState<any>();
+    const post = props.postId
 
     const [postImage, setPostImage] = useState<string>("");
     const [postDescription, setPostDescription] = useState<string>("");
@@ -47,22 +57,10 @@ const Viewpost = () => {
     const [modalVisible, setModalVisible] = useState(false)
 
     const [commentText, setCommentText] = useState("")
-    const [refreshCount, setRefreshCount] = useState(0)
 
     const [commentSectionLayout, setCommentSectionLayout] = useState<LayoutRectangle>()
-    const scrollViewRef = useRef<ScrollView>(null)
 
     const [heartVisible, setHeartVisible] = useState(false)
-
-    const refresh = () => {
-        setRefreshCount(past => past + 1)
-    }
-    
-    const refreshPost: TabProps["onRefresh"] = async (setRefreshing) => {
-        setRefreshing(true)
-        refresh()
-        setRefreshing(false)
-    }
 
     const requestDeletePost = async () => {
         let confirmed = await (new Promise((resolve) => {
@@ -104,8 +102,9 @@ const Viewpost = () => {
             session: session,
             body: {postId: post}
         })
+        
         if (body != undefined && body.code == "success")
-            refresh()
+            fetchLiked()
     }
 
     // gesture setup \\
@@ -122,7 +121,6 @@ const Viewpost = () => {
         runOnJS(setWaitingLike)(true)
         runOnJS(requestPostLike)()
         runOnJS(setHeartVisible)(true);
-
     });
     
     const gesture = Gesture.Exclusive(doubleTap, singleTap);
@@ -209,7 +207,7 @@ const Viewpost = () => {
         setCommentText("")
         Keyboard.dismiss()
         if (body.code && body.code == "success")
-            refresh()
+            props.refresh()
     }
 
     useEffect(() => {
@@ -229,12 +227,12 @@ const Viewpost = () => {
     useEffect(() => {
         fetchPostData()
         console.log("meow?")
-    }, [fetchPostData, post, refreshCount])
+    }, [fetchPostData, post])
 
     if (isLoading) {
         return (
           <TabPage title={"View Post"} titleVisible={true}>
-            <View className="w-full h-[70%] items-center justify-center">
+            <View className="w-full h-[70vh] items-center justify-center">
                 <ActivityIndicator size="large" color="#ffb900" className={`absolute`} />
             </View>
           </TabPage>
@@ -243,72 +241,69 @@ const Viewpost = () => {
 
     return (
         <GestureHandlerRootView>
-            <TabPage title={"View Post"} titleVisible={false} onRefresh={refreshPost} scrollRef={scrollViewRef}>
-                <View className="items-center p-4  w-full flex gap-4">
-                    <PostCreator displayName={profileDisplay} handle={profileHandle} imageUrl={profileImageUri} postDate={postDate}/>
+            <View className="items-center p-4  w-full flex gap-4">
+                <PostCreator displayName={profileDisplay} handle={profileHandle} imageUrl={profileImageUri} postDate={postDate}/>
 
-                    <Text className="color-white w-full text-left text-2xl">{postDescription}</Text>
-                    <GestureDetector gesture={gesture}>
-                        <View className="w-full h-[400px]">
-                            <PostImage source={postImage}/>
+                <Text className="color-white w-full text-left text-2xl">{postDescription}</Text>
+                <GestureDetector gesture={gesture}>
+                    <View className="w-full h-[400px]">
+                        <PostImage source={postImage}/>
 
-                            <HeartAnimation visible={heartVisible} onComplete={() => setHeartVisible(false)} />
-                        </View>
-                    </GestureDetector>
+                        <HeartAnimation visible={heartVisible} onComplete={() => setHeartVisible(false)} />
+                    </View>
+                </GestureDetector>
 
-                    <ImageView
-                        visible={modalVisible}
-                        images={[
+                <ImageView
+                    visible={modalVisible}
+                    images={[
+                        {
+                            uri: postImage
+                        }
+                    ]}
+                    imageIndex={0}
+                    onRequestClose={() => setModalVisible(false)}
+                    
+                />
+
+                <View className="flex flex-row w-full p-2 justify-between">
+                    <View className="flex flex-row gap-4">
+                        <Pressable onPress={requestPostLike}>
                             {
-                                uri: postImage
+                                (waitingLike) ? (<ActivityIndicator size="large" color="#ffb900" />) 
+                                : (<FontAwesome6 iconStyle={postIsLiked ? "solid" : "regular"} name={"heart"} size={40} color={"#ffb900"}  />)
                             }
-                        ]}
-                        imageIndex={0}
-                        onRequestClose={() => setModalVisible(false)}
-                        
-                    />
+                        </Pressable>
 
-                    <View className="flex flex-row w-full p-2 justify-between">
-                        <View className="flex flex-row gap-4">
-                            <Pressable onPress={requestPostLike}>
-                                {
-                                    (waitingLike) ? (<ActivityIndicator size="large" color="#ffb900" />) 
-                                    : (<FontAwesome6 iconStyle={postIsLiked ? "solid" : "regular"} name={"heart"} size={40} color={"#ffb900"}  />)
-                                }
-                            </Pressable>
+                        <Pressable onPress={() => {
+                            if (props.scrollViewRef == undefined) return
 
-                            <Pressable onPress={() => {
+                            const scrollView = props.scrollViewRef.current
+                            if (scrollView == null) return
 
-                                const scrollView = scrollViewRef.current
-                                if (scrollView == null) return
+                            scrollView.scrollTo({
+                                y: commentSectionLayout?.y,
+                                animated: true
+                            })
 
-                                scrollView.scrollTo({
-                                    y: commentSectionLayout?.y,
-                                    animated: true
-                                })
-
-                            }}>
-                                <FontAwesome6 iconStyle="regular" name={"comment"} size={40} color={"#ffb900"}  />
-                            </Pressable>
-                        </View>
-        {/* 
-                        <Pressable>
-                            <FontAwesome6 iconStyle="" name={"share-from-square"} size={40} color={"#ffb900"}  />
-                        </Pressable> */}
-
-                        <View>
-                            <Pressable onPress={requestDeletePost}>
-                          {
-                            ownsPost ? (<FontAwesome6 iconStyle="solid" name={"trash-can"} size={40} color={"#ffb900"}  />) 
-                            : ("") 
-                          }
-                          </Pressable>
-                        </View>
-                        
+                        }}>
+                            <FontAwesome6 iconStyle="regular" name={"comment"} size={40} color={"#ffb900"}  />
+                        </Pressable>
                     </View>
 
-                    <View className="w-full border-t border-neutral-600 p-2 pt-4 mb-48 flex gap-4" onLayout={event => setCommentSectionLayout(event.nativeEvent.layout)}>
-                        
+                    <View>
+                        <Pressable onPress={requestDeletePost}>
+                        {
+                        ownsPost ? (<FontAwesome6 iconStyle="solid" name={"trash-can"} size={40} color={"#ffb900"}  />) 
+                        : ("") 
+                        }
+                        </Pressable>
+                    </View>
+                    
+                </View>
+                
+                {props.showComments && (
+                        <View className="w-full border-t border-neutral-600 p-2 pt-4 mb-48 flex gap-4" onLayout={event => setCommentSectionLayout(event.nativeEvent.layout)}>
+                    
                         <Text className="text-white text-2xl">{postComments.length} Comments</Text>
                         <View className="flex flex-row w-full items-center justify-between gap-4">
                             <SigninTextField title="" placeholder="Wrie down a comment?" className="grow" onChangeText={setCommentText} value={commentText}/>
@@ -320,11 +315,12 @@ const Viewpost = () => {
                         }
 
                     </View>
-                </View>
-            </TabPage>
+                )}
+                
+            </View>
         </GestureHandlerRootView>
         
     )
 }
 
-export default Viewpost;
+export default Post;

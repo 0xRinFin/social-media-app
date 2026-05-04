@@ -8,5 +8,5 @@
 - Expressjs
 
 # Preview
-
+(this is the mockup art, it looks different)
 <img src="https://github.com/0xRinFin/social-media-app/blob/master/Frame%209.png"/>

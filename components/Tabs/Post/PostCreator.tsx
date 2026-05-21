@@ -10,7 +10,7 @@ import { Text, View } from "react-native"
 import { requestFollow } from "../Profile/Viewprofile"
 
 export type postProps = {
-    imageUrl: string, handle: string, displayName: string, postDate: string
+    postCreator: string, imageUrl: string, handle: string, displayName: string, postDate: string
 }
 
 const PostCreator = (props: postProps) => {
@@ -27,10 +27,10 @@ const PostCreator = (props: postProps) => {
     const fetchIsFollowing = async () => {
         if (profile == undefined) return
 
-       const {success} = await supabase.from("follows").select("*").eq("follower_id", profile.id).single()
+        const {success} = await supabase.from("follows").select("*").eq("follower_id", profile.id).eq("following_id", props.postCreator).single()
 
-       setIsSelf(profile.handle == props.handle)
-       setIsFollowing(success)   
+        setIsSelf(profile.handle == props.handle)
+        setIsFollowing(success)   
     }
      
 

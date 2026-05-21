@@ -23,7 +23,7 @@ const Message = (props: {isSelf: boolean, messageData: MessageData, userData: Pr
         <View className={`flex ${reverseString} gap-2 w-full items-start`}>
             <Image source={props.avatar_url} style={{height: 50, width:50, borderRadius:50, borderWidth:1, borderColor:"#2f2f2f"}}/>
 
-            <View className={`grow flex gap-2 items-${props.isSelf ? "end" : "start" } `}>
+            <View className={`grow flex gap-2 ${props.isSelf ? "items-end" : "items-start" } `}>
                 <View className={`flex ${reverseString} justify-between`}>
                     <View className={`flex ${reverseString} gap-1 grow`}>
                         <Text className="text-white text-md font-bold">{props.userData.display_name}</Text>

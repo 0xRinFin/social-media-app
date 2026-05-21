@@ -21,10 +21,8 @@ const FollowDisplay = (props: {targetId: string}) => {
     const fetchIsFollowing = async () => {
         if (profile == undefined) return
 
-       const {success} = await supabase.from("follows").select("*").eq("follower_id", profile.id).single()
-
-       setIsSelf(profile.handle == handle)
-       setIsFollowing(success)   
+        const {success} = await supabase.from("follows").select("*").eq("follower_id", profile.id).eq("following_id", props.targetId).single()
+        setIsFollowing(success)   
     }
 
     const fetchProfileData = async () => {
@@ -32,6 +30,7 @@ const FollowDisplay = (props: {targetId: string}) => {
         if (!success)
             return
 
+        setIsSelf(profile.handle == data.handle)
         setHandle(data.handle)
     }
 

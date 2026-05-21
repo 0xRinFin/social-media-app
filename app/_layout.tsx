@@ -14,7 +14,7 @@ const RootNavigator = () => {
 
     const loggedOutHandler = () => {
         if (isLoading) return;
-        if (!isLoggedIn) return router.replace('/(welcome)/AboutLinque');
+        if (!isLoggedIn) return router.replace('/(welcome)/');
 
 
     }

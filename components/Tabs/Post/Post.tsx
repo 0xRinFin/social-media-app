@@ -42,6 +42,7 @@ const Post = (props: {postId: string, showComments: boolean, refresh: () => void
     const [postProfile, setPostProfile] = useState<string>("");
     const [postDate, setPostDate] = useState("")
     const [postComments, setPostComments] = useState<any>([]);
+    const [postLikes, setPostLikes] = useState<number>(0);
 
     const [ownsPost, setOwnsPost] = useState(false);
 
@@ -158,8 +159,18 @@ const Post = (props: {postId: string, showComments: boolean, refresh: () => void
         if (postData == undefined) return;
         if (profile == undefined) return
 
-        const {success} = await supabase.from("post_likes").select("*").eq("post_id", post).eq("user_id", profile.id).single()
-        setPostIsLiked(success)
+        const {data} = await supabase.from("post_likes").select("*").eq("post_id", post)
+        let isLiked = false;
+        setPostLikes(0);
+
+        data?.forEach(element => {
+            if (element.user_id == profile.id)
+                isLiked = true
+            
+            setPostLikes(prev => prev + 1)    
+        });
+
+        setPostIsLiked(isLiked)
         setWaitingLike(false)
     }
 
@@ -226,7 +237,6 @@ const Post = (props: {postId: string, showComments: boolean, refresh: () => void
 
     useEffect(() => {
         fetchPostData()
-        console.log("meow?")
     }, [fetchPostData, post])
 
     if (isLoading) {
@@ -242,7 +252,7 @@ const Post = (props: {postId: string, showComments: boolean, refresh: () => void
     return (
         <GestureHandlerRootView>
             <View className="items-center p-4  w-full flex gap-4">
-                <PostCreator displayName={profileDisplay} handle={profileHandle} imageUrl={profileImageUri} postDate={postDate}/>
+                <PostCreator postCreator={postProfile} displayName={profileDisplay} handle={profileHandle} imageUrl={profileImageUri} postDate={postDate}/>
 
                 <Text className="color-white w-full text-left text-2xl">{postDescription}</Text>
                 <GestureDetector gesture={gesture}>
@@ -262,10 +272,9 @@ const Post = (props: {postId: string, showComments: boolean, refresh: () => void
                     ]}
                     imageIndex={0}
                     onRequestClose={() => setModalVisible(false)}
-                    
                 />
 
-                <View className="flex flex-row w-full p-2 justify-between">
+                <View className="flex flex-row w-full p-2 justify-between items-center">
                     <View className="flex flex-row gap-4">
                         <Pressable onPress={requestPostLike}>
                             {
@@ -288,9 +297,14 @@ const Post = (props: {postId: string, showComments: boolean, refresh: () => void
                         }}>
                             <FontAwesome6 iconStyle="regular" name={"comment"} size={40} color={"#ffb900"}  />
                         </Pressable>
+                        
                     </View>
 
-                    <View>
+                    <View className={"flex gap-4 flex-row items-center"}>
+                        <Text className={"text-2xl color-white"}>
+                            <Text className={"text-amber-300 font-bold"}>{postLikes}</Text> Likes
+                        </Text>
+
                         <Pressable onPress={requestDeletePost}>
                         {
                         ownsPost ? (<FontAwesome6 iconStyle="solid" name={"trash-can"} size={40} color={"#ffb900"}  />) 

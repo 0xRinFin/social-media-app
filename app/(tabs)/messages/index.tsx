@@ -55,11 +55,11 @@ const Messages = () => {
     }, [profile, refreshCount])
     
     return (
-        <TabPage onRefresh={refreshMessages} title={"Messages"} titleVisible={true} className={"items-center flex gap-3 h-full"}>
+        <TabPage onRefresh={refreshMessages} title={"Messages"} titleVisible={true} className={"items-center flex h-full"}>
             {(isLoading) ?
                 (<ActivityIndicator size="large" color="#ffb900" className={`absolute`} />)
             : (
-            <View className="w-[95vw] mt-4">
+            <View className="w-[95vw] mt-4 flex gap-2">
             {
                 conversationsArray.map((conversationData: ConversationData, i: number) => {
                 const targetId = (profile.id != conversationData.user_a) ? conversationData.user_a : conversationData.user_b

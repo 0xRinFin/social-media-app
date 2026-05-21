@@ -4,7 +4,6 @@ import {checkAuthorization} from "@server/utils/authorization";
 import { randomUUID } from 'node:crypto';
 
 const followPOST = async (req: Request, res: Response) => {
-    console.log("meow")
     const { handle } = req.body;
     const { authorization : authorizationToken } = req.headers;
 
@@ -25,19 +24,20 @@ const followPOST = async (req: Request, res: Response) => {
     const {data: isFollowingData} = await supabase.from("follows").select("*").eq("following_id", following_id).eq("follower_id", follower_id).single()
     if (isFollowingData != null)
     {
-        const {data: grr, error: zzz} = await supabase.from("follows").delete().eq("following_id", following_id).eq("follower_id", follower_id)
+        await supabase.from("follows").delete().eq("following_id", following_id).eq("follower_id", follower_id)
         return res.status(200).json({__isAuthError: false, code: "success"})
     }
 
     // new follow \\
-    const {data: newFollowing, error: newFollowingError} = await supabase.from("follows").upsert({ follower_id, following_id })
+    await supabase.from("follows").upsert({ follower_id, following_id })
     if (error)
         return res.status(400).json({__isAuthError: false, code: "invalid_request"})
 
     // check if conversation exists \\
     const { data: userAConversation } = await supabase.from("conversations").select("*").eq("user_a", follower_id).eq("user_b", following_id)
     const { data: userBConversation } = await supabase.from("conversations").select("*").eq("user_b", follower_id).eq("user_a", following_id)
-    if (userAConversation != null || userBConversation != null)
+
+    if (userAConversation?.length === 0 && userBConversation?.length === 0)
     {
         // new conversation \\
         const convoId = randomUUID()

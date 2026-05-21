@@ -26,3 +26,6 @@ expo-env.d.ts
 
 .idea/
 .env
+
+*.7z
+diploma.7z

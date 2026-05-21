@@ -95,7 +95,7 @@ const SignUp = () => {
                        <SignInTextField iconName={"key"} title={"Парола"} isPassword={true} onChangeText={setPassword} ref={passwordRef}/>
                    </View>
 
-                   <SignInCheckBox label={`Съгласявам се с Общите условия`} onChange={setAgreed}/>
+                   <SignInCheckBox label={`Съгласявам се с `} termsHref={"terms"} termsLabel={"Общите условия"} onChange={setAgreed}/>
                    <WrappedButton isActive={isActive} title={"Създай акаунт"} onClick={handleSignUp} extraClassName={"rounded-xl"} isAnimated={true}/>
                </View>
 

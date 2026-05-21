@@ -1,8 +1,8 @@
 import {Link, useLocalSearchParams, useRouter} from "expo-router";
 import { supabase } from "@/app/utils/supabase";
-import {Ref, useContext, useEffect, useRef, useState} from "react";
+import {useCallback, useContext, useEffect, useState} from "react";
 import TabPage, { TabProps } from "@/components/Tabs/TabPage";
-import {ActivityIndicator, Alert, FlatList, Keyboard, LayoutRectangle, Pressable, Text, View} from "react-native";
+import {ActivityIndicator, Alert, Keyboard, LayoutRectangle, Pressable, ScrollView, Text, View} from "react-native";
 import { Image } from "expo-image";
 import { fetchProfileImage } from "app/utils/postUtils";
 import ImageView from "react-native-image-viewing" 
@@ -13,7 +13,6 @@ import PostComment, { commentData } from "./PostComment";
 import IconButton from "@/components/IconButton";
 import { apiCall } from "@/app/utils/apiUtils";
 import { AuthContext } from "@/app/authentication/use-auth-context";
-import { ScrollView } from "react-native-reanimated/lib/typescript/Animated";
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler';
 import { runOnJS } from 'react-native-reanimated';
 import HeartAnimation from "./HeartAnimation";
@@ -30,7 +29,7 @@ export type PostInfo = {
 }
 
 
-const Post = (props: {postId: string, showComments: boolean, refresh: () => void, scrollViewRef?: React.RefObject<ScrollView | null>} ) => {
+const Post = (props: {refreshCount?: number, postId: string, showComments: boolean, refresh: () => void, scrollViewRef?: React.RefObject<ScrollView | null>} ) => {
     const router = useRouter()
     const {session, profile, fetchProfile} = useContext(AuthContext)
 
@@ -127,14 +126,19 @@ const Post = (props: {postId: string, showComments: boolean, refresh: () => void
     const gesture = Gesture.Exclusive(doubleTap, singleTap);
 
     // the rest \\
-    const fetchPostData = async () => {
+    const fetchPostData = useCallback(async () => {
         if (post == undefined) return;
 
+        setIsLoading(true)
         const {data} = await supabase.from("posts").select("*").eq("id", post).single()
 
-        if (data == undefined) return
+        if (data == undefined) {
+            setIsLoading(false)
+            return
+        }
+
         setPostData(data)
-    }
+    }, [post])
 
     const fetchProfileData = async () => {
         if (post == undefined) return;
@@ -237,7 +241,7 @@ const Post = (props: {postId: string, showComments: boolean, refresh: () => void
 
     useEffect(() => {
         fetchPostData()
-    }, [fetchPostData, post])
+    }, [fetchPostData, props.refreshCount])
 
     if (isLoading) {
         return (

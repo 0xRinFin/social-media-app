@@ -9,13 +9,14 @@ import { supabase } from "@/app/utils/supabase";
 import { followerInfo } from "@/components/Tabs/Follows/FollowPage";
 import { PostInfo } from "@/components/Tabs/Post/ViewPost";
 import Post from "@/components/Tabs/Post/Post";
+import { ProfileData } from "@/components/UserDisplay";
 
 
 const Home = () => {
 	const router = useRouter();
 	const {profile} = useAuthContext();
 
-	const [follows, setFollows] = useState<[followerInfo?]>([]);
+	const [follows, setFollows] = useState<followerInfo[]>([]);
 	const [posts, setPosts] = useState<PostInfo[]>([]);
 
 	const [refreshCount, setRefreshCount] = useState(0)
@@ -57,6 +58,7 @@ const Home = () => {
 
 	const refreshPost: TabProps["onRefresh"] = async (setRefreshing) => {
 		setRefreshing(true)
+		await fetchFollowed()
 		refresh()
 		setRefreshing(false)
 	}
@@ -64,12 +66,11 @@ const Home = () => {
 
 	useEffect(() => {
 		fetchFollowed()
-	}, [fetchFollowed])
+	}, [fetchFollowed, refreshCount])
 
 	useEffect(() => {
-		setPosts([])
 		fetchPosts()
-	}, [follows, refreshCount])
+	}, [follows])
 
 
 	return (

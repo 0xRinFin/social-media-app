@@ -19,22 +19,27 @@ type postData = {
 } 
 
 export const requestFollow = async (session: AuthSession, handle: string, setIsLoading: (state: any) => void, setReloadCounter: (prev: any) => any) => {
-    if (!session) return
+    if (!session) return false
 
     setIsLoading(true);
 
-    const res = await apiCall({
-        method: "POST",
-        controller:"ProfileController",
-        route: "follow",
-        session: session,
+    try {
+        const res = await apiCall({
+            method: "POST",
+            controller:"ProfileController",
+            route: "follow",
+            session: session,
 
-        body: {handle}
-    })
+            body: {handle}
+        })
 
-    setIsLoading(false);
-    //@ts-ignore
-    setReloadCounter(prev => prev + 1)
+        if (res == undefined || res.code != "success") return false
+
+        setReloadCounter((prev: number) => prev + 1)
+        return true
+    } finally {
+        setIsLoading(false);
+    }
 }
 
 const Viewprofile = () => {

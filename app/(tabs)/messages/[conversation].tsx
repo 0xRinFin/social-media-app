@@ -177,20 +177,20 @@ const Conversation = () => {
                             keyboardDismissMode="interactive"
                             showsVerticalScrollIndicator={false}
                         >
-                            <Text className="text-lg text-white mt-16 self-center">Your legendary conversation begins!</Text>
+                            <Text className="text-lg text-white mt-16 self-center">Разговорът започва тук!</Text>
 
                             {messageArray.map((messageData: MessageData, i: number) => {
                                 const isSelf = messageData.sender_id === profile?.id
                                 const ownData = userAData || profile || {
                                     id: userA,
-                                    display_name: "You",
-                                    handle: "you",
+                                    display_name: "Ти",
+                                    handle: "ti",
                                     description: "",
                                 }
                                 const targetData = userBData || {
                                     id: userB,
-                                    display_name: "User",
-                                    handle: "user",
+                                    display_name: "Потребител",
+                                    handle: "potrebitel",
                                     description: "",
                                 }
 
@@ -219,7 +219,7 @@ const Conversation = () => {
                             <SigninTextField
                                 className="grow"
                                 title=""
-                                placeholder="What do you want to send?"
+                                placeholder="Какво искаш да изпратиш?"
                                 onSubmitEditing={requestSendMessage}
                                 onChangeText={setMessage}
                                 value={message}

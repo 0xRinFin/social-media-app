@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { bg } from "date-fns/locale";
 import { supabase } from "./supabase";
 
 export const defaultIcon = require("assets/Images/default_avatar.jpg");
@@ -18,7 +19,7 @@ export const fetchProfileImage = async (id?: string) => {
 
 
 export const formatDate = (created_at: string) => {
-  return new Date(created_at).toLocaleDateString('en-GB', {
+  return new Date(created_at).toLocaleDateString('bg-BG', {
     day: 'numeric',
     month: 'long',
     year: 'numeric'
@@ -26,5 +27,5 @@ export const formatDate = (created_at: string) => {
 };
 
 export const formatTime = (created_at: string) => {
-  return format(new Date(created_at), 'h:mm a');
+  return format(new Date(created_at), 'HH:mm', { locale: bg });
 };

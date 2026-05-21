@@ -10,23 +10,23 @@ const TabsLayout: React.FC = () => {
     return (
       <NativeTabs tintColor={"#ffb900"}>
           <NativeTabs.Trigger name={"home"}>
-              <Label>Home</Label>
+              <Label>Начало</Label>
               <Icon sf={{ default: 'house', selected: 'house.fill' }} drawable="custom_home_drawable" />
           </NativeTabs.Trigger>
 
           <NativeTabs.Trigger name={"search"}>
-              <Label>Search</Label>
+              <Label>Търсене</Label>
               <Icon sf={{ default: 'magnifyingglass.circle', selected: 'magnifyingglass.circle.fill' }} drawable="custom_search_drawable" />
           </NativeTabs.Trigger>
 
           <NativeTabs.Trigger name={"messages"}>
-              <Label>Messages</Label>
+              <Label>Съобщения</Label>
               <Icon sf={{ default: 'message', selected: 'message.fill' }} drawable="custom_messages_drawable" />
               <Badge>2</Badge>
           </NativeTabs.Trigger>
 
           <NativeTabs.Trigger name={"profile"} >
-              <Label>Profile</Label>
+              <Label>Профил</Label>
               <Icon sf={{ default: 'person', selected: 'person.fill' }} drawable="custom_profile_drawable" />
           </NativeTabs.Trigger>
 

@@ -14,6 +14,10 @@ import { baseButtonStyle, baseEditButtonStyle, editButtonStyle } from "@/app/(ta
 
 const checkered = require("assets/Images/checkered.jpg")
 
+const uploadErrorMessages: Record<string, string> = {
+    invalid_request: "Заявката е невалидна. Моля, избери снимка и опитай отново.",
+}
+
 const UploadPost = () => {
     const router = useRouter()
     const {session} = useContext(AuthContext)
@@ -59,27 +63,29 @@ const UploadPost = () => {
 
         if (rawr && rawr.code == "success")
             router.replace({pathname:`home/post/${rawr.uuid}`})
-        else
-            Alert.alert("Error", `Sorry there was an error!\n${rawr.code}`)
+        else {
+            const errorText = uploadErrorMessages[rawr?.code] || "Съжаляваме, възникна грешка. Моля, опитай отново."
+            Alert.alert("Грешка", errorText)
+        }
     };
 
     return (
-        <TabPage title="Upload Post" titleVisible={true}>
+        <TabPage title="Качи публикация" titleVisible={true}>
             <View className="p-4 pt-6 flex gap-6 mb-[35vh]">
                 <View className="w-full h-[400px]">
                     <Pressable onPress={promptSelectImage}>
                         <View className={`z-10 w-full h-full absolute flex justify-center items-center ${selectedImage != null && "" }`}>
                             <ActivityIndicator size="large" color="#ffb900" className={`absolute ${!isImageLoading && "hidden"}`} />
                 
-                            <WrappedButton isAnimated={true} onClick={promptSelectImage} title="Upload Image" isActive={true} extraClassName={baseButtonStyle + ` w-full ${isImageLoading && "hidden"}`}/>
+                            <WrappedButton isAnimated={true} onClick={promptSelectImage} title="Качи снимка" isActive={true} extraClassName={baseButtonStyle + ` w-full ${isImageLoading && "hidden"}`}/>
                         </View>
 
                         <PostImage source={selectedImage || checkered} className={`opacity-${selectedImage != null ? 100 : 50 }`}/>
                     </Pressable>
                 </View>
 
-                <SigninTextField onChangeText={setDescription} title="Description" placeholder="What do you wanna say?" />
-                <WrappedButton isLoading={isLoading} title="Post" isActive={true} isAnimated={true} onClick={requestPostUpload} extraClassName={baseEditButtonStyle} />
+                <SigninTextField onChangeText={setDescription} title="Описание" placeholder="Какво искаш да кажеш?" />
+                <WrappedButton isLoading={isLoading} title="Публикувай" isActive={true} isAnimated={true} onClick={requestPostUpload} extraClassName={baseEditButtonStyle} />
             </View>
         </TabPage>
     )

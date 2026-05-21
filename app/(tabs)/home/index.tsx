@@ -73,8 +73,8 @@ const Home = () => {
 
 
 	return (
-		<TabPage title={"Index"} className={"p-4 flex gap-3 h-full "} onRefresh={refreshPost}>
-			<WrappedButton isActive={true} title={"Upload Post"} extraClassName={baseEditButtonStyle} onClick={
+		<TabPage title={"Начало"} className={"p-4 flex gap-3 h-full "} onRefresh={refreshPost}>
+			<WrappedButton isActive={true} title={"Качи публикация"} extraClassName={baseEditButtonStyle} onClick={
 				() => router.push("home/post/uploadpost")
 			} isAnimated={true}/>
 

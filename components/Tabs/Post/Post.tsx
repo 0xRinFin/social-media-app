@@ -66,11 +66,11 @@ const Post = (props: {postId: string, showComments: boolean, refresh: () => void
     const requestDeletePost = async () => {
         let confirmed = await (new Promise((resolve) => {
             Alert.alert(
-                "Confirm",
-                "Are you sure you want to permanently delete this post?",
+                "Потвърждение",
+                "Сигурен ли си, че искаш да изтриеш тази публикация завинаги?",
                 [
-                    { text: "Cancel", style: "cancel", onPress:() => resolve(false) },
-                    { text: "OK", style: "default", onPress:() => resolve(true) },
+                    { text: "Отказ", style: "cancel", onPress:() => resolve(false) },
+                    { text: "Да", style: "default", onPress:() => resolve(true) },
                 ]
             );
          }));
@@ -88,7 +88,7 @@ const Post = (props: {postId: string, showComments: boolean, refresh: () => void
         if (body == undefined || body.code != "success")
             return
 
-        Alert.alert("Deleted post", "Successfully deleted this post!")
+        Alert.alert("Изтрита публикация", "Публикацията беше изтрита успешно!")
         fetchProfile()
         router.back()
     }
@@ -241,7 +241,7 @@ const Post = (props: {postId: string, showComments: boolean, refresh: () => void
 
     if (isLoading) {
         return (
-          <TabPage title={"View Post"} titleVisible={true}>
+          <TabPage title={"Преглед на публикация"} titleVisible={true}>
             <View className="w-full h-[70vh] items-center justify-center">
                 <ActivityIndicator size="large" color="#ffb900" className={`absolute`} />
             </View>
@@ -302,7 +302,7 @@ const Post = (props: {postId: string, showComments: boolean, refresh: () => void
 
                     <View className={"flex gap-4 flex-row items-center"}>
                         <Text className={"text-2xl color-white"}>
-                            <Text className={"text-amber-300 font-bold"}>{postLikes}</Text> Likes
+                            <Text className={"text-amber-300 font-bold"}>{postLikes}</Text> Харесвания
                         </Text>
 
                         <Pressable onPress={requestDeletePost}>
@@ -318,9 +318,9 @@ const Post = (props: {postId: string, showComments: boolean, refresh: () => void
                 {props.showComments && (
                         <View className="w-full border-t border-neutral-600 p-2 pt-4 mb-48 flex gap-4" onLayout={event => setCommentSectionLayout(event.nativeEvent.layout)}>
                     
-                        <Text className="text-white text-2xl">{postComments.length} Comments</Text>
+                        <Text className="text-white text-2xl">{postComments.length} Коментара</Text>
                         <View className="flex flex-row w-full items-center justify-between gap-4">
-                            <SigninTextField title="" placeholder="Wrie down a comment?" className="grow" onChangeText={setCommentText} value={commentText}/>
+                            <SigninTextField title="" placeholder="Напиши коментар..." className="grow" onChangeText={setCommentText} value={commentText}/>
                             <IconButton name="paper-plane" size={30} style={"solid"} onPress={requestSendComment} color={"#ffb900"}/>
                         </View>
 

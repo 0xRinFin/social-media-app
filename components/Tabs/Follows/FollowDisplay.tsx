@@ -50,7 +50,7 @@ const FollowDisplay = (props: {targetId: string}) => {
     return (
         <UserDisplay targetId={props.targetId}>
             <View className={`w-40 ${isSelf && "hidden"}`}>
-                <WrappedButton isLoading={isLoading} title={isFollowing ? "Following" : "Follow"} isActive={true} isAnimated={true} onClick={follow} extraClassName={"w-full " + baseButtonStyle + ` ${ isFollowing && "bg-neutral-600" }`}/>
+                <WrappedButton isLoading={isLoading} title={isFollowing ? "Следваш" : "Последвай"} isActive={true} isAnimated={true} onClick={follow} extraClassName={"w-full " + baseButtonStyle + ` ${ isFollowing && "bg-neutral-600" }`}/>
             </View>
         </UserDisplay>
     )

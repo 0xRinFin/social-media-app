@@ -66,7 +66,7 @@ const Editprofile = () => {
             .upload(`/${profile.id}/avatar.jpg`, toByteArray(chosenImage.base64), { contentType:"image/jpg", upsert: true });
 
         if (error) console.error(error);
-        else Alert.alert("Success", "Avatar picture successfully updated!");
+        else Alert.alert("Успех", "Профилната снимка беше обновена успешно!");
     };
 
     const updatePage = () => {
@@ -99,10 +99,10 @@ const Editprofile = () => {
     }, [profile, reloadCounter]);
 
     return (
-        <TabPage title={"Edit Index"} onRefresh={refreshPage}>
+        <TabPage title={"Редактиране на профил"} onRefresh={refreshPage}>
           <View className="p-4 flex gap-10">
               <Pressable onPress={() => router.back()} className="p-2 w-26 ">
-                  <Text className={"color-amber-500"}> <Text className={"font-bold"}>&lt;</Text> Go Back</Text>
+                  <Text className={"color-amber-500"}> <Text className={"font-bold"}>&lt;</Text> Назад</Text>
               </Pressable>
 
               <View className={"flex gap-10 p-4"}>
@@ -127,21 +127,21 @@ const Editprofile = () => {
               </View>
 
               <View className={"flex gap-6"}>
-                  <Text className={labelStyle}>Info</Text>
-                  <SignInTextField title={"Display Name"} iconName={"lock"} value={name} disabled={true}></SignInTextField>
-                  <SignInTextField title={"Handle"} iconName={"lock"} value={handle} disabled={true}></SignInTextField>
+                  <Text className={labelStyle}>Информация</Text>
+                  <SignInTextField title={"Име за показване"} iconName={"lock"} value={name} disabled={true}></SignInTextField>
+                  <SignInTextField title={"Потребителско име"} iconName={"lock"} value={handle} disabled={true}></SignInTextField>
               </View>
 
               <View className={"flex gap-6 mb-24"}>
-                  <Text className={labelStyle}>Update Account</Text>
-                  <WrappedButton isActive={true} title={"Change Display Name"} onClick={() => openUpdateDetail("display_name")} isAnimated={true} extraClassName={editButtonStyle}></WrappedButton>
-                  <WrappedButton isActive={true} title={"Change Handle"} onClick={() => openUpdateDetail("handle")} isAnimated={true} extraClassName={editButtonStyle}></WrappedButton>
+                  <Text className={labelStyle}>Обнови акаунта</Text>
+                  <WrappedButton isActive={true} title={"Промени името за показване"} onClick={() => openUpdateDetail("display_name")} isAnimated={true} extraClassName={editButtonStyle}></WrappedButton>
+                  <WrappedButton isActive={true} title={"Промени потребителското име"} onClick={() => openUpdateDetail("handle")} isAnimated={true} extraClassName={editButtonStyle}></WrappedButton>
               </View>
 
               <View className={"flex gap-6"}>
-                  <Text className={labelStyle}>Account</Text>
-                  <WrappedButton isActive={true} title={"Delete Account"} onClick={() => router.push("profile/updatedetail")} isAnimated={true} extraClassName={editButtonStyle + " bg-red-600 text-white"}></WrappedButton>
-                  <WrappedButton isActive={true} title={"Sign Out"} onClick={logout} isAnimated={true} extraClassName={editButtonStyle}></WrappedButton>
+                  <Text className={labelStyle}>Акаунт</Text>
+                  <WrappedButton isActive={true} title={"Изтрий акаунта"} onClick={() => router.push("profile/updatedetail")} isAnimated={true} extraClassName={editButtonStyle + " bg-red-600 text-white"}></WrappedButton>
+                  <WrappedButton isActive={true} title={"Изход"} onClick={logout} isAnimated={true} extraClassName={editButtonStyle}></WrappedButton>
               </View>
 
               <View className={"flex mb-24"}>

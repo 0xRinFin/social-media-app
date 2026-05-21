@@ -53,8 +53,8 @@ const Viewprofile = () => {
     const [followerCount, setFollowerCount] = useState(0)
     const [followingCount, setFollowingCount] = useState(0)
 
-    const [name, setName] = useState("Viewprofile");
-    const [handle, setHandle] = useState("Viewprofile");
+    const [name, setName] = useState("Профил");
+    const [handle, setHandle] = useState("profil");
     const [description, setDescription] = useState("");
     const [profileImageUri, setProfileImageUri] = useState<string | null>(defaultIcon);
 
@@ -139,7 +139,7 @@ const Viewprofile = () => {
     }
 
     return (
-        <TabPage title="Index View" onRefresh={refreshPage} className={""}>
+        <TabPage title="Профил" onRefresh={refreshPage} className={""}>
             <ScrollView
                 className="flex-1"
                 contentContainerStyle={{ paddingBottom: 20 }}
@@ -160,13 +160,13 @@ const Viewprofile = () => {
                             <View className="flex flex-row gap-4">
                                 <Pressable onPress={() => router.push({pathname:`${routeOpened}/following/${handle}`, params:{type:"followers"}}) }>
                                     <Text className="text-xl color-neutral-400 font-light">
-                                        Followers: <View className="bg-amber-400 rounded-md translate-y-[6px] p-[1px]"><Text className="font-bold">{followerCount}</Text></View>
+                                        Последователи: <View className="bg-amber-400 rounded-md translate-y-[6px] p-[1px]"><Text className="font-bold">{followerCount}</Text></View>
                                     </Text>
                                 </Pressable>
 
                                 <Pressable onPress={() => router.push({pathname:`${routeOpened}/following/${handle}`, params:{type:"followings"}}) }>
                                     <Text className="text-xl color-neutral-400 font-light">
-                                        Following: <View className="bg-amber-400 rounded-md translate-y-[6px] p-[1px]"><Text className="font-bold">{followingCount}</Text></View>
+                                        Следва: <View className="bg-amber-400 rounded-md translate-y-[6px] p-[1px]"><Text className="font-bold">{followingCount}</Text></View>
                                     </Text>
                                 </Pressable>
                             </View>
@@ -175,7 +175,7 @@ const Viewprofile = () => {
                     {description ? <Text className="color-white mb-6">{description}</Text> : null}
                     <WrappedButton
                         isActive
-                        title={isSelf ? "Edit Profile" : (isFollowing ? "Following" : "Follow") }
+                        title={isSelf ? "Редактирай профила" : (isFollowing ? "Следваш" : "Последвай") }
                         isLoading={isLoading}
                         onClick={() => {
                             if (isSelf)

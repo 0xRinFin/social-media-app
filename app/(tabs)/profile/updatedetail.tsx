@@ -10,13 +10,13 @@ import {apiCall} from "@/app/utils/apiUtils";
 import {AuthContext} from "@/app/authentication/use-auth-context";
 
 const details = {
-    ["handle"]: "Handle",
-    ["display_name"]: "Display Name"
+    ["handle"]: "Потребителско име",
+    ["display_name"]: "Име за показване"
 }
 
 const error_codes = {
-    setting_error: "There was an error setting the data",
-    handle_taken: "Handle already exists"
+    setting_error: "Възникна грешка при запазването на данните",
+    handle_taken: "Потребителското име вече съществува"
 }
 
 const updateDetailPage = () => {
@@ -31,7 +31,7 @@ const updateDetailPage = () => {
 
     // @ts-ignore
     const detailName = details[detail]
-    if (!detail || detailName == undefined) return ( <View><Text>Invalid detail name</Text></View> )
+    if (!detail || detailName == undefined) return ( <View><Text>Невалидно име на поле</Text></View> )
 
     // @ts-ignore
     const requestChangeDetail = () => {
@@ -50,14 +50,14 @@ const updateDetailPage = () => {
             })
             console.log(data)
             if (data.success) {
-                Alert.alert("Success", `Successfully changed your ${detailName}!`)
+                Alert.alert("Успех", `${detailName} беше променено успешно!`)
                 fetchProfile()
                 router.back()
             }
             else {
                 // @ts-ignore
                 const errorText = error_codes[data.code]
-                Alert.alert("Error", errorText)
+                Alert.alert("Грешка", errorText)
             }
         })()
     }
@@ -67,12 +67,12 @@ const updateDetailPage = () => {
     }, [newDetailValue]);
 
     return (
-        <TabPage title={`Change ${detailName}`} titleVisible={true}>
+        <TabPage title={`Промяна на ${detailName}`} titleVisible={true}>
             <View className="p-4 flex gap-2">
                 <SignInTextField title={detailName} onChangeText={setNewDetailValue}></SignInTextField>
 
-                <WrappedButton isActive={active} title={"Change"} onClick={requestChangeDetail } isAnimated={true} extraClassName={baseEditButtonStyle + " text-black"}></WrappedButton>
-                <WrappedButton isActive={true} title={"Cancel"} onClick={() => router.back()} isAnimated={true} extraClassName={editButtonStyle}></WrappedButton>
+                <WrappedButton isActive={active} title={"Промени"} onClick={requestChangeDetail } isAnimated={true} extraClassName={baseEditButtonStyle + " text-black"}></WrappedButton>
+                <WrappedButton isActive={true} title={"Отказ"} onClick={() => router.back()} isAnimated={true} extraClassName={editButtonStyle}></WrappedButton>
             </View>
         </TabPage>
     )

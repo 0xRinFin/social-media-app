@@ -50,7 +50,7 @@ const Viewpost = () => {
     useCallback(refresh, [refreshCount])
 
     return (
-        <TabPage title={"View Post"} titleVisible={false} onRefresh={refreshPost} scrollRef={scrollViewRef}>
+        <TabPage title={"Преглед на публикация"} titleVisible={false} onRefresh={refreshPost} scrollRef={scrollViewRef}>
             <Post postId={post} refresh={refresh} scrollViewRef={scrollViewRef} showComments={true}/>
         </TabPage>
     )

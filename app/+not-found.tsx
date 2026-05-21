@@ -4,7 +4,7 @@ import { Text } from 'react-native';
 const NotFound = () => {
   return (
     <SafeAreaView className="items-center justify-center text-center">
-      <Text>Route not found!</Text>
+      <Text>Страницата не е намерена!</Text>
     </SafeAreaView>
   );
 };

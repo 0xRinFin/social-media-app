@@ -26,18 +26,18 @@ const Search = () => {
 
 
     return (
-        <TabPage title="Search Profile" titleVisible={true}>
+        <TabPage title="Търсене на профил" titleVisible={true}>
             <View  className="w-full p-4 flex gap-4">
-                <SigninTextField title="" placeholder="Search @handle" onChangeText={setSearchInput} iconName="tag"/>
+                <SigninTextField title="" placeholder="Търси @име" onChangeText={setSearchInput} iconName="tag"/>
 
                 <View className="gap-4">
-                    <Text className="text-white text-3xl">{users.length} Profiles found</Text>
+                    <Text className="text-white text-3xl">{users.length} намерени профила</Text>
 
                     {(users.length == 0) &&
                         (
                         <View className="flex">
                             <Image source={require("assets/Images/not_found.png")} style={{ width:"100%", height: "80%", opacity:0.2} } contentFit="contain" />
-                            <Text className="text-white text-center text-4xl font-bold opacity-50 -translate-y-20">NOT FOUND</Text>
+                            <Text className="text-white text-center text-4xl font-bold opacity-50 -translate-y-20">НЯМА РЕЗУЛТАТИ</Text>
                         </View>
                         )
                     }

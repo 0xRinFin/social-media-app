@@ -45,7 +45,7 @@ const SigninTextField = forwardRef<SigninTextFieldRef, SignInTextfieldProps>((pr
                     <Text className={"text-white text-md"}>{props.title}</Text>
                     {(props.isPassword && props.canReset) && (
                         <Link href={"forgot-password"}>
-                            <Text className={"color-amber-300 underline underline-offset-4"}>Forgot Password?</Text>
+                            <Text className={"color-amber-300 underline underline-offset-4"}>Забравена парола?</Text>
                         </Link>
                     )}
                 </View>

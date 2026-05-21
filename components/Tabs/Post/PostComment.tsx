@@ -4,6 +4,7 @@ import { Image } from "expo-image"
 import { useEffect, useState } from "react"
 import { Text, View } from "react-native"
 import { formatDistanceToNow } from "date-fns"
+import { bg } from "date-fns/locale"
 import { Pressable } from "react-native-gesture-handler"
 import { Link } from "expo-router"
 
@@ -66,7 +67,7 @@ const PostComment = (props: commentProps) => {
                                 <Text className="color-amber-400 opacity-50 text-sm">@{handle}</Text>
                             </View>
 
-                            <Text className="color-neutral-400">{formatDistanceToNow(commentData.created_at, { addSuffix: true })}</Text>
+                            <Text className="color-neutral-400">{formatDistanceToNow(new Date(commentData.created_at), { addSuffix: true, locale: bg })}</Text>
 
                         </View>
 

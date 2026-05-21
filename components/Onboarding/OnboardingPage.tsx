@@ -78,7 +78,7 @@ const OnboardingPage = ({ slides, currentIndex, setCurrentIndex, buttonText, onF
                 </View>
                 <WrappedButton
                     isActive={true}
-                    title={buttonText ?? "Next"}
+                    title={buttonText ?? "Напред"}
                     onClick={handleNext}
                     extraClassName="rounded-xl"
                     isAnimated={false}

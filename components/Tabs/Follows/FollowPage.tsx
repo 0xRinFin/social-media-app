@@ -56,7 +56,7 @@ const FollowPage = (props: followPageProps) => {
     }, [params.handle])
 
     return (
-        <TabPage onRefresh={refresh} title={`@${params.handle}'s ${isFollowerPage ? "Followers" : "Followings"}`} titleVisible={true}>
+        <TabPage onRefresh={refresh} title={`${isFollowerPage ? "Последователи" : "Следвани"} на @${params.handle}`} titleVisible={true}>
             <View className="p-4 flex gap-2">
                 {
                     followingList.map((x: followerInfo, i: number) => {

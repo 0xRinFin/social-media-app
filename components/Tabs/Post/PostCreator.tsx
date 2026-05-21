@@ -56,7 +56,7 @@ const PostCreator = (props: postProps) => {
                     </View>
 
                     <View className={`w-35 ${isSelf && "hidden"}`}>
-                        <WrappedButton isLoading={isLoading} title={isFollowing ? "Following" : "Follow"} isActive={true} isAnimated={true} onClick={() => requestFollow(session, props.handle, setIsLoading, setRefreshCounter)} extraClassName={"w-full " + baseButtonStyle + ` ${ isFollowing && "bg-neutral-600" }`}/>
+                        <WrappedButton isLoading={isLoading} title={isFollowing ? "Следваш" : "Последвай"} isActive={true} isAnimated={true} onClick={() => requestFollow(session, props.handle, setIsLoading, setRefreshCounter)} extraClassName={"w-full " + baseButtonStyle + ` ${ isFollowing && "bg-neutral-600" }`}/>
                     </View>
                 </View>
             </Link>

@@ -23,7 +23,7 @@ const SignIn = () => {
         const {data, error} = await supabaseClient.auth.signInWithPassword({email, password})
         console.log(error)
         if (error)
-            return Alert.alert("Error!", "There was an unexpected error")
+            return Alert.alert("Грешка!", "Възникна неочаквана грешка")
     }
 
     // const {data, error} = await supabaseClient.auth.signInWithPassword({email: "radan@gmail.com", password: "radana"})
@@ -33,24 +33,24 @@ const SignIn = () => {
             <View className={'h-full items-center justify-center bg-black p-10'}>
                 <View className={'flex justify-center gap-15'}>
                     <Animated.View entering={FadeInUp.duration(300).springify()}>
-                        <Text className="text-white text-4xl">Ready to join?</Text>
-                        <Text className="text-white text-xl font-extralight ">Sign back to <Text className={"text-amber-300"}>Linque</Text> and continue chatting with your friends.</Text>
+                        <Text className="text-white text-4xl">Готов ли си да се присъединиш?</Text>
+                        <Text className="text-white text-xl font-extralight ">Влез отново в <Text className={"text-amber-300"}>Linque</Text> и продължи да чатиш с приятелите си.</Text>
                     </Animated.View>
 
 
                     <View className={"flex gap-5"}>
-                        <SigninTextField iconName={"envelope"} title={"E-mail"} onChangeText={setEmail} onSubmitEditing={passwordRef.current?.focus}/>
-                        <SigninTextField canReset={true} iconName={"key"} title={"Password"} isPassword={true} onChangeText={setPassword} ref={passwordRef}/>
+                        <SigninTextField iconName={"envelope"} title={"Имейл"} onChangeText={setEmail} onSubmitEditing={passwordRef.current?.focus}/>
+                        <SigninTextField canReset={true} iconName={"key"} title={"Парола"} isPassword={true} onChangeText={setPassword} ref={passwordRef}/>
                     </View>
 
-                    <WrappedButton isActive={isActive} title={"Sign In"} onClick={requestSignIn} extraClassName={"rounded-xl"} isAnimated={true}/>
+                    <WrappedButton isActive={isActive} title={"Вход"} onClick={requestSignIn} extraClassName={"rounded-xl"} isAnimated={true}/>
                 </View>
 
                 <View className={"absolute bottom-10"}>
                     <OnboardingAnimated>
-                        <Text className={"text-white font-extralight text-center"}>Haven't signed up yet?</Text>
+                        <Text className={"text-white font-extralight text-center"}>Още нямаш регистрация?</Text>
                         <Link className={"font-light"} href={"sign-up"}>
-                            <Text className={"text-amber-300 text-center"}>Create an account</Text>
+                            <Text className={"text-amber-300 text-center"}>Създай акаунт</Text>
                         </Link>
                     </OnboardingAnimated>
                 </View>

@@ -55,7 +55,7 @@ const Messages = () => {
     }, [profile, refreshCount])
     
     return (
-        <TabPage onRefresh={refreshMessages} title={"Messages"} titleVisible={true} className={"items-center flex h-full"}>
+        <TabPage onRefresh={refreshMessages} title={"Съобщения"} titleVisible={true} className={"items-center flex h-full"}>
             {(isLoading) ?
                 (<ActivityIndicator size="large" color="#ffb900" className={`absolute`} />)
             : (
